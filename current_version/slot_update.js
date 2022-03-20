@@ -1,6 +1,6 @@
 //sets some CSS values from the configuration file
-document.getElementById("roster_".concat(poke_data[roster_loop]["slotId"], "_exp_border")).style.width = experience_bar_width;
-document.getElementById("roster_".concat(poke_data[roster_loop]["slotId"], "_border")).style.width = health_bar_width;
+document.getElementById("roster_".concat(slotId, "_exp_border")).style.width = experience_bar_width;
+document.getElementById("roster_".concat(slotId, "_border")).style.width = health_bar_width;
 
 //creates various arrays of pokemon data looked up by pokemon types for the pokemon types. Each type is assigned a number which is used later to call the correct data from this array.
 
@@ -58,407 +58,30 @@ const pokemon_pids_minus_2 = [-1, -1, -1, -1, -1, -1, -1];
 //this function actually looks every 1/10 a second to see if any changes are in the json file, and updates them as it goes
 function update_() {
 
-    var roster_loop;
-    roster_loop = 0;
-
-
-
-    //checks to see how many times the loop should run, i.e. how many new pieces of data are being sent.
-    var data_count = Object.keys(poke_data).length;
-
-
-    //runs the loop through all the new updates. slotId tells you which slot you're updating in the loop. slotId and roster_loop will not always be the same number.
-    while (roster_loop < data_count) {
-
+    poke_data.forEach((pokeSlot, roster_loop) => { //not using roster_loop, but that's your iteration index, if you like it
         //checks the current update number to the one stored in the updates variable, if they're the same, doesn't bother running the code.
-        if (slot_change_ids[poke_data[roster_loop]["slotId"]] != poke_data[roster_loop]["changeId"]) {
+        if (slot_change_ids[slotId] != pokeSlot["changeId"]) {
+            var partyPokemon = pokeSlot["pokemon"];
             //if the data updates to 'null', then this blanks out the slot
-            if (poke_data[roster_loop]["pokemon"] == null) {
-                if (sprite_draw == true) {
-                    document.getElementById("roster_".concat(poke_data[roster_loop]["slotId"], "_sprite")).style.backgroundImage = "url('')";
-                }
-
-                if (pokeball_draw == true) {
-                    document.getElementById("ball_sprite_".concat(poke_data[roster_loop]["slotId"])).style.backgroundImage = "url('')";
-                }
-
-                if (held_item_draw == true) {
-                    document.getElementById("held_item_sprite_".concat(poke_data[roster_loop]["slotId"])).style.backgroundImage = "url('')";
-                }
-
-                if (nickname_draw == true) {
-                    document.getElementById("roster_".concat(poke_data[roster_loop]["slotId"], "_nickname")).innerHTML = "";
-                }
-                if (species_name_draw == true) {
-                    document.getElementById("roster_".concat(poke_data[roster_loop]["slotId"], "_species")).innerHTML = "";
-                }
-                if (species_name_draw == true) {
-                    document.getElementById("roster_".concat(poke_data[roster_loop]["slotId"], "_egg")).innerHTML = "";
-                }
-                if (level_draw == true) {
-                    document.getElementById("roster_".concat(poke_data[roster_loop]["slotId"], "_level")).innerHTML = "";
-                }
-                if (hp_numeric_draw == true) {
-                    document.getElementById("roster_".concat(poke_data[roster_loop]["slotId"], "_hp_numerical")).innerHTML = "";
-                }
-
-                if (types_draw) {
-                    document.getElementById("roster_".concat(poke_data[roster_loop]["slotId"], "_type_1_bg")).style.backgroundColor = pokemon_type_colors[0];
-                    document.getElementById("roster_".concat(poke_data[roster_loop]["slotId"], "_type_1")).innerHTML = pokemon_type_names[0];
-                    document.getElementById("roster_".concat(poke_data[roster_loop]["slotId"], "_type_2_bg")).style.backgroundColor = pokemon_type_colors[0];
-                    document.getElementById("roster_".concat(poke_data[roster_loop]["slotId"], "_type_2")).innerHTML = pokemon_type_names[0];
-                }
-
-                if (status_draw == true) {
-                    document.getElementById("status_bg_".concat(poke_data[roster_loop]["slotId"])).style.backgroundColor = pokemon_status_colors[0];
-                    document.getElementById("status_".concat(poke_data[roster_loop]["slotId"])).innerHTML = pokemon_status_names[0];
-                }
-
-                if (experience_draw == true) {
-                    document.getElementById("roster_".concat(poke_data[roster_loop]["slotId"], "_exp_border")).style.borderWidth = 0;
-
-                    document.getElementById("roster_".concat(poke_data[roster_loop]["slotId"], "_exp")).style.width = 0;
-                    document.getElementById("roster_".concat(poke_data[roster_loop]["slotId"], "_exp")).style.backgroundColor = 'rgba(0,0,0,0)';
-                }
-
-                if (hp_draw == true) {
-                    document.getElementById("roster_".concat(poke_data[roster_loop]["slotId"], "_border")).style.borderWidth = 0;
-                    document.getElementById("roster_".concat(poke_data[roster_loop]["slotId"], "_hp")).style.width = 0;
-                    document.getElementById("roster_".concat(poke_data[roster_loop]["slotId"], "_hp")).style.backgroundColor = 'rgba(0,0,0,0)';
-                }
-
-                if (gender_draw == true) {
-                    document.getElementById("roster_gender_".concat(poke_data[roster_loop]["slotId"])).style.backgroundColor =
-                        pokemon_gender_colors[0];
-                    document.getElementById("roster_gender_".concat(poke_data[roster_loop]["slotId"])).innerHTML = pokemon_gender_symbols[0];
-                }
-
-                if (moves_draw == true) {
-                    var moves_draw_loop = 1;
-                    while (moves_draw_loop < 5) {
-                        document.getElementById("roster_move_".concat(moves_draw_loop, "_", poke_data[roster_loop]["slotId"])).innerHTML = "";
-                        document.getElementById("roster_move_".concat(moves_draw_loop, "_bg_", poke_data[roster_loop]["slotId"])).style.backgroundColor = pokemon_type_colors[0];
-
-                        moves_draw_loop++;
-                    }
-                }
-
-            }
-
-            //this is a special case for if the pokemon is an egg. It clears out most values and types Egg in a special name holder
-            else if (poke_data[roster_loop]["pokemon"]["isEgg"] != 0) {
-                if (sprite_draw == true) {
-                    document.getElementById("roster_".concat(poke_data[roster_loop]["slotId"], "_sprite")).style.backgroundImage = "url('".concat(pokemon_normal_sprites_root, egg_filename, "')");
-                }
-
-                if (pokeball_draw == true) {
-                    document.getElementById("ball_sprite_".concat(poke_data[roster_loop]["slotId"])).style.backgroundImage = "url('')";
-                }
-
-                if (held_item_draw == true) {
-                    document.getElementById("held_item_sprite_".concat(poke_data[roster_loop]["slotId"])).style.backgroundImage = "url('')";
-                }
-
-                if (nickname_draw == true) {
-                    document.getElementById("roster_".concat(poke_data[roster_loop]["slotId"], "_nickname")).innerHTML = "";
-                }
-                if (species_name_draw == true) {
-                    document.getElementById("roster_".concat(poke_data[roster_loop]["slotId"], "_species")).innerHTML = "";
-                }
-                if (species_name_draw == true) {
-                    document.getElementById("roster_".concat(poke_data[roster_loop]["slotId"], "_egg")).innerHTML = "Egg";
-                }
-                if (level_draw == true) {
-                    document.getElementById("roster_".concat(poke_data[roster_loop]["slotId"], "_level")).innerHTML = "";
-                }
-                if (hp_numeric_draw == true) {
-                    document.getElementById("roster_".concat(poke_data[roster_loop]["slotId"], "_hp_numerical")).innerHTML = "";
-                }
-
-                if (types_draw) {
-                    document.getElementById("roster_".concat(poke_data[roster_loop]["slotId"], "_type_1_bg")).style.backgroundColor = pokemon_type_colors[0];
-                    document.getElementById("roster_".concat(poke_data[roster_loop]["slotId"], "_type_1")).innerHTML = pokemon_type_names[0];
-                    document.getElementById("roster_".concat(poke_data[roster_loop]["slotId"], "_type_2_bg")).style.backgroundColor = pokemon_type_colors[0];
-                    document.getElementById("roster_".concat(poke_data[roster_loop]["slotId"], "_type_2")).innerHTML = pokemon_type_names[0];
-                }
-
-                if (status_draw == true) {
-                    document.getElementById("status_bg_".concat(poke_data[roster_loop]["slotId"])).style.backgroundColor = pokemon_status_colors[0];
-                    document.getElementById("status_".concat(poke_data[roster_loop]["slotId"])).innerHTML = pokemon_status_names[0];
-                }
-
-                if (experience_draw == true) {
-                    document.getElementById("roster_".concat(poke_data[roster_loop]["slotId"], "_exp_border")).style.borderWidth = 0;
-
-                    document.getElementById("roster_".concat(poke_data[roster_loop]["slotId"], "_exp")).style.width = 0;
-                    document.getElementById("roster_".concat(poke_data[roster_loop]["slotId"], "_exp")).style.backgroundColor = 'rgba(0,0,0,0)';
-                }
-
-                if (hp_draw == true) {
-                    document.getElementById("roster_".concat(poke_data[roster_loop]["slotId"], "_border")).style.borderWidth = 0;
-                    document.getElementById("roster_".concat(poke_data[roster_loop]["slotId"], "_hp")).style.width = 0;
-                    document.getElementById("roster_".concat(poke_data[roster_loop]["slotId"], "_hp")).style.backgroundColor = 'rgba(0,0,0,0)';
-                }
-
-                if (gender_draw == true) {
-                    document.getElementById("roster_gender_".concat(poke_data[roster_loop]["slotId"])).style.backgroundColor =
-                        pokemon_gender_colors[0];
-                    document.getElementById("roster_gender_".concat(poke_data[roster_loop]["slotId"])).innerHTML = pokemon_gender_symbols[0];
-                }
-
-
-                if (moves_draw == true) {
-                    var moves_draw_loop = 1;
-                    while (moves_draw_loop < 5) {
-                        document.getElementById("roster_move_".concat(moves_draw_loop, "_", poke_data[roster_loop]["slotId"])).innerHTML = "";
-                        document.getElementById("roster_move_".concat(moves_draw_loop, "_bg_", poke_data[roster_loop]["slotId"])).style.backgroundColor = pokemon_type_colors[0];
-
-                        moves_draw_loop++;
-                    }
-                }
-
-
-            }
-
-            //this updates actual pokemon if neither null nor egg. Updates all elements set to true in the configuration.js file
-            else {
-                //zero's out the egg just for good measure
-                if (species_name_draw == true) {
-                    document.getElementById("roster_".concat(poke_data[roster_loop]["slotId"], "_egg")).innerHTML = "";
-                }
-
-                // if the pokemon is an unown, looks at unown sprite
-                if (sprite_draw == true) {
-
-
-                    if (poke_data[roster_loop]["pokemon"]["species"] == 201) {
-
-                        var pid_binary = poke_data[roster_loop]["pokemon"]["pid"].toString(2);
-                        var unown_binary = pid_binary.slice(pid_binary.length - 26, pid_binary.length - 24) + pid_binary.slice(pid_binary.length - 18, pid_binary.length - 16) + pid_binary.slice(pid_binary.length - 10, pid_binary.length - 8) + pid_binary.slice(pid_binary.length - 2, pid_binary.length);
-                        var unown_dec = parseInt(unown_binary, 2);
-                        var unown_mod = (unown_dec % 28);
-                        console.log(unown_mod);
-
-                        if (poke_data[roster_loop]["pokemon"]["isShiny"] == false) {
-                            document.getElementById("roster_".concat(poke_data[roster_loop]["slotId"], "_sprite")).style.backgroundImage = "url('".concat(pokemon_normal_sprites_root, unown_file_names[unown_mod].toLowerCase(), pokemon_sprites_extension, "')");
-                            document.getElementById("roster_shiny_".concat(poke_data[roster_loop]["slotId"])).innerHTML = "";
-                        } else {
-                            document.getElementById("roster_".concat(poke_data[roster_loop]["slotId"], "_sprite")).style.backgroundImage = "url('".concat(pokemon_shiny_sprites_root, unown_file_names[unown_mod].toLowerCase(), pokemon_sprites_extension, "')");
-                            document.getElementById("roster_shiny_".concat(poke_data[roster_loop]["slotId"])).innerHTML = "&#11088";
-                        }
-
-                    } else {
-                        //checks if pokemon is normal or shiny, and if shiny loads the shiny sprite.
-                        if (poke_data[roster_loop]["pokemon"]["isShiny"] == false) {
-                            document.getElementById("roster_".concat(poke_data[roster_loop]["slotId"], "_sprite")).style.backgroundImage = "url('".concat(pokemon_normal_sprites_root, pokemon_file_names[poke_data[roster_loop]["pokemon"]["species"]].toLowerCase(), pokemon_sprites_extension, "')");
-                            document.getElementById("roster_shiny_".concat(poke_data[roster_loop]["slotId"])).innerHTML = "";
-                        } else {
-                            document.getElementById("roster_".concat(poke_data[roster_loop]["slotId"], "_sprite")).style.backgroundImage = "url('".concat(pokemon_shiny_sprites_root, pokemon_file_names[poke_data[roster_loop]["pokemon"]["species"]].toLowerCase(), pokemon_file_extensions, "')");
-                            document.getElementById("roster_shiny_".concat(poke_data[roster_loop]["slotId"])).innerHTML = "&#11088";
-                        }
-
-                    }
-
-                }
-
-                //This code loads the pokeball the pokemon was caught in
-                if (pokeball_draw == true) {
-                    document.getElementById("ball_sprite_".concat(poke_data[roster_loop]["slotId"])).style.backgroundImage = "url('".concat(item_images_root, gen_3_items[poke_data[roster_loop]["pokemon"]["pokeball"]].toLowerCase(), item_extension, "')");
-                }
-
-                if (held_item_draw == true) {
-                    document.getElementById("held_item_sprite_".concat(poke_data[roster_loop]["slotId"])).style.backgroundImage = "url('".concat(item_images_root, gen_3_items[poke_data[roster_loop]["pokemon"]["heldItem"]].toLowerCase(), item_extension, "')");
-                }
-
-                //Calculates the gender of the pokemon from the PID
-                if (gender_draw == true) {
-                    var pid_binary = poke_data[roster_loop]["pokemon"]["pid"].toString(2);
-                    var gender_binary = pid_binary.slice(pid_binary.length - 8, pid_binary.length);
-                    var gender_bit_dec_10 = parseInt(gender_binary, 2);
-
-                    if (gender_threshold_values[poke_data[roster_loop]["pokemon"]["species"]] == 0) {
-                        document.getElementById("roster_gender_".concat(poke_data[roster_loop]["slotId"])).style.backgroundColor = pokemon_gender_colors[2];
-                        document.getElementById("roster_gender_".concat(poke_data[roster_loop]["slotId"])).innerHTML = pokemon_gender_symbols[2];
-                    } //always Male
-                    else if (gender_threshold_values[poke_data[roster_loop]["pokemon"]["species"]] == 254) {
-                        document.getElementById("roster_gender_".concat(poke_data[roster_loop]["slotId"])).style.backgroundColor = pokemon_gender_colors[1];
-                        document.getElementById("roster_gender_".concat(poke_data[roster_loop]["slotId"])).innerHTML = pokemon_gender_symbols[1];
-                    } //always Female
-                    else if (gender_threshold_values[poke_data[roster_loop]["pokemon"]["species"]] == 255) {
-                        document.getElementById("roster_gender_".concat(poke_data[roster_loop]["slotId"])).style.backgroundColor = pokemon_gender_colors[0];
-                        document.getElementById("roster_gender_".concat(poke_data[roster_loop]["slotId"])).innerHTML = pokemon_gender_symbols[0];
-                    } //gender neutral
-                    else {
-
-                        if (gender_bit_dec_10 < gender_threshold_values[poke_data[roster_loop]["pokemon"]["species"]]) {
-                            document.getElementById("roster_gender_".concat(poke_data[roster_loop]["slotId"])).style.backgroundColor = pokemon_gender_colors[1];
-                            document.getElementById("roster_gender_".concat(poke_data[roster_loop]["slotId"])).innerHTML = pokemon_gender_symbols[1];
-                        } else {
-                            document.getElementById("roster_gender_".concat(poke_data[roster_loop]["slotId"])).style.backgroundColor = pokemon_gender_colors[2];
-                            document.getElementById("roster_gender_".concat(poke_data[roster_loop]["slotId"])).innerHTML = pokemon_gender_symbols[2];
-                        }
-
-                    }
-
-                }
-
-                //reads the pokemon's nickname, turns it into a standard format of only first letter capital, and then prints that to the nickname field.
-                if (nickname_draw == true) {
-                    var nickname_std = poke_data[roster_loop]["pokemon"]["nickname"].charAt(0).toUpperCase() + poke_data[roster_loop]["pokemon"]["nickname"].slice(1).toLowerCase();
-                    document.getElementById("roster_".concat(poke_data[roster_loop]["slotId"], "_nickname")).innerHTML = nickname_std;
-                }
-
-                //prints the pokemon's species name into the species field
-                if (species_name_draw == true) {
-                    document.getElementById("roster_".concat(poke_data[roster_loop]["slotId"], "_species")).innerHTML = poke_data[roster_loop]["pokemon"]["speciesName"];
-                }
-
-                //prints the pokemon's level into the Level field.
-                if (level_draw == true) {
-                    document.getElementById("roster_".concat(poke_data[roster_loop]["slotId"], "_level")).innerHTML = "Lv. ".concat(poke_data[roster_loop]["pokemon"]["level"]);
-                }
-
-                //this looks up the two types the pokemon may have, and then prints them into the type fields, while also changing the background colors of the types.
-                if (types_draw == true) {
-                    document.getElementById("roster_".concat(poke_data[roster_loop]["slotId"], "_type_1_bg")).style.backgroundColor = pokemon_type_colors[pokemon_type_1_lookup[poke_data[roster_loop]["pokemon"]["species"]]];
-                    document.getElementById("roster_".concat(poke_data[roster_loop]["slotId"], "_type_1")).innerHTML = pokemon_type_names[pokemon_type_1_lookup[poke_data[roster_loop]["pokemon"]["species"]]].toUpperCase();
-                    document.getElementById("roster_".concat(poke_data[roster_loop]["slotId"], "_type_2_bg")).style.backgroundColor = pokemon_type_colors[pokemon_type_2_lookup[poke_data[roster_loop]["pokemon"]["species"]]];
-                    document.getElementById("roster_".concat(poke_data[roster_loop]["slotId"], "_type_2")).innerHTML = pokemon_type_names[pokemon_type_2_lookup[poke_data[roster_loop]["pokemon"]["species"]]].toUpperCase();
-                }
-
-                //this code deals with drawing the HP bar and text
-                if (hp_draw == true) {
-                    document.getElementById("roster_".concat(poke_data[roster_loop]["slotId"], "_border")).style.borderWidth = 2;
-
-                    //this code calculates the health bar length
-                    var health_ = poke_data[roster_loop]["pokemon"]["hp"]["current"] / poke_data[roster_loop]["pokemon"]["hp"]["max"];
-                    var health_width = health_ * health_bar_width;
-
-                    document.getElementById("roster_".concat(poke_data[roster_loop]["slotId"], "_hp")).style.width = health_width;
-                    if (health_ > 0.5) {
-                        document.getElementById("roster_".concat(poke_data[roster_loop]["slotId"], "_hp")).style.backgroundColor = 'rgba(122, 255, 170,255)';
-                    }
-                    if (health_ <= 0.5) {
-                        document.getElementById("roster_".concat(poke_data[roster_loop]["slotId"], "_hp")).style.backgroundColor = 'rgba(243, 231, 62, 255)';
-                    }
-                    if (health_ <= 0.2) {
-                        document.getElementById("roster_".concat(poke_data[roster_loop]["slotId"], "_hp")).style.backgroundColor = 'rgba(211, 78, 80, 255)';
-                    }
-                }
-
-                if (hp_numeric_draw == true) {
-                    document.getElementById("roster_".concat(poke_data[roster_loop]["slotId"], "_hp_numerical")).innerHTML = "&nbsp".concat(poke_data[roster_loop]["pokemon"]["hp"]["current"], "/", poke_data[roster_loop]["pokemon"]["hp"]["max"]);
-                }
-
-                //pokemon status conditions.
-                //if pokemon is fainted, render fainted
-                if (status_draw == false) {
-                    if (poke_data[roster_loop]["pokemon"]["hp"]["current"] == 0) {
-                        document.getElementById("status_".concat(poke_data[roster_loop]["slotId"])).innerHTML = pokemon_status_names[7];
-                        document.getElementById("status_bg_".concat(poke_data[roster_loop]["slotId"])).style.backgroundColor = pokemon_status_colors[7];
-                    } else if (poke_data[roster_loop]["pokemon"]["status"]["psn"] == true) {
-                        document.getElementById("status_".concat(poke_data[roster_loop]["slotId"])).innerHTML = pokemon_status_names[1];
-                        document.getElementById("status_bg_".concat(poke_data[roster_loop]["slotId"])).style.backgroundColor = pokemon_status_colors[1];
-                    } else if (poke_data[roster_loop]["pokemon"]["status"]["frz"] == true) {
-                        document.getElementById("status_".concat(poke_data[roster_loop]["slotId"])).innerHTML = pokemon_status_names[2];
-                        document.getElementById("status_bg_".concat(poke_data[roster_loop]["slotId"])).style.backgroundColor = pokemon_status_colors[2];
-                    } else if (poke_data[roster_loop]["pokemon"]["status"]["slp"] == true) {
-                        document.getElementById("status_".concat(poke_data[roster_loop]["slotId"])).innerHTML = pokemon_status_names[3];
-                        document.getElementById("status_bg_".concat(poke_data[roster_loop]["slotId"])).style.backgroundColor = pokemon_status_colors[3];
-                    } else if (poke_data[roster_loop]["pokemon"]["status"]["par"] == true) {
-                        document.getElementById("status_".concat(poke_data[roster_loop]["slotId"])).innerHTML = pokemon_status_names[4];
-                        document.getElementById("status_bg_".concat(poke_data[roster_loop]["slotId"])).style.backgroundColor = pokemon_status_colors[4];
-                    } else if (poke_data[roster_loop]["pokemon"]["status"]["bps"] == true) {
-                        document.getElementById("status_".concat(poke_data[roster_loop]["slotId"])).innerHTML = pokemon_status_names[5];
-                        document.getElementById("status_bg_".concat(poke_data[roster_loop]["slotId"])).style.backgroundColor = pokemon_status_colors[5];
-                    } else if (poke_data[roster_loop]["pokemon"]["status"]["brn"] == true) {
-                        document.getElementById("status_".concat(poke_data[roster_loop]["slotId"])).innerHTML = pokemon_status_names[6];
-                        document.getElementById("status_bg_".concat(poke_data[roster_loop]["slotId"])).style.backgroundColor = pokemon_status_colors[6];
-                    } else if (poke_data[roster_loop]["pokemon"]["pokerus"] > 0) {
-                        document.getElementById("status_".concat(poke_data[roster_loop]["slotId"])).innerHTML = pokemon_status_names[8];
-                        document.getElementById("status_bg_".concat(poke_data[roster_loop]["slotId"])).style.backgroundColor = pokemon_status_colors[8];
-                    } else {
-                        document.getElementById("status_".concat(poke_data[roster_loop]["slotId"])).innerHTML = pokemon_status_names[0];
-                        document.getElementById("status_bg_".concat(poke_data[roster_loop]["slotId"])).style.backgroundColor = pokemon_status_colors[0];
-                    }
-
-                }
-
-
-                // Erratic	0    Fast	1    Medium Fast	2    Medium Slow	3    Slow	4    Fluctuating	5
-                //calculates the current exp in the current level, and translates that to the length of the experience bar. First it looks up the level curve the pokemon is going to draw values from, then uses that with the pokemon's current level to calculate the variance.
-                if (experience_draw == true) {
-                    document.getElementById("roster_".concat(poke_data[roster_loop]["slotId"], "_exp_border")).style.borderWidth = 2;
-                    document.getElementById("roster_".concat(poke_data[roster_loop]["slotId"], "_exp")).style.backgroundColor = 'rgba(75, 210, 244,255)';
-
-                    if (pokemon_level_curve[poke_data[roster_loop]["pokemon"]["species"]] == 0) {
-                        var exp_ = poke_data[roster_loop]["pokemon"]["exp"] - level_curve_erratic[poke_data[roster_loop]["pokemon"]["level"]];
-                        var exp_width = ((poke_data[roster_loop]["pokemon"]["exp"] - level_curve_erratic[poke_data[roster_loop]["pokemon"]["level"]]) / (level_curve_erratic[poke_data[roster_loop]["pokemon"]["level"] + 1] - level_curve_erratic[poke_data[roster_loop]["pokemon"]["level"]])) * exp_bar_width;
-                    } else if (pokemon_level_curve[poke_data[roster_loop]["pokemon"]["species"]] == 1) {
-                        var exp_ = poke_data[roster_loop]["pokemon"]["exp"] - level_curve_fast[poke_data[roster_loop]["pokemon"]["level"]];
-                        var exp_width = ((poke_data[roster_loop]["pokemon"]["exp"] - level_curve_fast[poke_data[roster_loop]["pokemon"]["level"]]) / (level_curve_fast[poke_data[roster_loop]["pokemon"]["level"] + 1] - level_curve_fast[poke_data[roster_loop]["pokemon"]["level"]])) * exp_bar_width;
-                    } else if (pokemon_level_curve[poke_data[roster_loop]["pokemon"]["species"]] == 2) {
-                        var exp_ = poke_data[roster_loop]["pokemon"]["exp"] - level_curve_medium_fast[poke_data[roster_loop]["pokemon"]["level"]];
-                        var exp_width = ((poke_data[roster_loop]["pokemon"]["exp"] - level_curve_medium_fast[poke_data[roster_loop]["pokemon"]["level"]]) / (level_curve_medium_fast[poke_data[roster_loop]["pokemon"]["level"] + 1] - level_curve_medium_fast[poke_data[roster_loop]["pokemon"]["level"]])) * exp_bar_width;
-                    } else if (pokemon_level_curve[poke_data[roster_loop]["pokemon"]["species"]] == 3) {
-                        var exp_ = poke_data[roster_loop]["pokemon"]["exp"] - level_curve_medium_slow[poke_data[roster_loop]["pokemon"]["level"]];
-                        var exp_width = ((poke_data[roster_loop]["pokemon"]["exp"] - level_curve_medium_slow[poke_data[roster_loop]["pokemon"]["level"]]) / (level_curve_medium_slow[poke_data[roster_loop]["pokemon"]["level"] + 1] - level_curve_medium_slow[poke_data[roster_loop]["pokemon"]["level"]])) * exp_bar_width;
-                    } else if (pokemon_level_curve[poke_data[roster_loop]["pokemon"]["species"]] == 4) {
-                        var exp_ = poke_data[roster_loop]["pokemon"]["exp"] - level_curve_slow[poke_data[roster_loop]["pokemon"]["level"]];
-                        var exp_width = ((poke_data[roster_loop]["pokemon"]["exp"] - level_curve_slow[poke_data[roster_loop]["pokemon"]["level"]]) / (level_curve_slow[poke_data[roster_loop]["pokemon"]["level"] + 1] - level_curve_slow[poke_data[roster_loop]["pokemon"]["level"]])) * exp_bar_width;
-                    } else if (pokemon_level_curve[poke_data[roster_loop]["pokemon"]["species"]] == 5) {
-                        var exp_ = poke_data[roster_loop]["pokemon"]["exp"] - level_curve_fluctuating[poke_data[roster_loop]["pokemon"]["level"]];
-                        var exp_width = ((poke_data[roster_loop]["pokemon"]["exp"] - level_curve_fluctuating[poke_data[roster_loop]["pokemon"]["level"]]) / (level_curve_fluctuating[poke_data[roster_loop]["pokemon"]["level"] + 1] - level_curve_fluctuating[poke_data[roster_loop]["pokemon"]["level"]])) * exp_bar_width;
-                    }
-
-
-                    document.getElementById("roster_".concat(poke_data[roster_loop]["slotId"], "_exp")).style.width = exp_width;
-                }
-
-
-                if (moves_draw == true) {
-
-                    console.log(poke_data[roster_loop]["pokemon"]["move4"]["name"])
-                    var moves_draw_loop = 1;
-
-                    while (moves_draw_loop < 5) {
-                        if (poke_data[roster_loop]["pokemon"]["move".concat(moves_draw_loop)]["name"] !== undefined) {
-                            document.getElementById("roster_move_".concat(moves_draw_loop, "_", poke_data[roster_loop]["slotId"])).innerHTML = poke_data[roster_loop]["pokemon"]["move".concat(moves_draw_loop)]["name"];
-                            document.getElementById("roster_move_".concat(moves_draw_loop, "_bg_", poke_data[roster_loop]["slotId"])).style.backgroundColor = pokemon_type_colors[1];
-                        } else {
-                            document.getElementById("roster_move_".concat(moves_draw_loop, "_", poke_data[roster_loop]["slotId"])).innerHTML = "";
-                            document.getElementById("roster_move_".concat(moves_draw_loop, "_bg_", poke_data[roster_loop]["slotId"])).style.backgroundColor = pokemon_type_colors[0];
-                        }
-                        moves_draw_loop++;
-                    }
-
-                }
-
-
-
-                //this curly bracket is the ened of the else statement. if its supposed to be in the else statement for the pokemon update, put it *before* this curly boi
+            if (partyPokemon == null) {
+                Slot_Null(pokeSlot["slotId"]);
+            } else if (partyPokemon["isEgg"] != 0) {
+                Slot_Egg(pokeSlot["slotId"])
+            } else {
+                //this updates actual pokemon if neither null nor egg. Updates all elements set to true in the configuration.js file
+                Slot_Pokemon(pokeSlot["slotId"], partyPokemon)
             }
 
             //this code will be eventually used to solve the pokemon flip glitch
-            //pokemon_pids_minus_2[poke_data[roster_loop]["slotId"]] = pokemon_pids_minus_1[poke_data[roster_loop]["slotId"]];
-            //pokemon_pids_minus_1[poke_data[roster_loop]["slotId"]] = poke_data[roster_loop]["pokemon"]["pid"];
-            //console.log("Pokemon in ".concat(poke_data[roster_loop]["slotId"], ": ", poke_data[roster_loop]["pokemon"]["speciesName"]));
+            //pokemon_pids_minus_2[slotId] = pokemon_pids_minus_1[slotId];
+            //pokemon_pids_minus_1[slotId] = partyPokemon["pid"];
+            //console.log("Pokemon in ".concat(slotId, ": ", partyPokemon["speciesName"]));
             //console.log(pokemon_pids_minus_1);
             //console.log(pokemon_pids_minus_2);
         }
-        //end of function
 
-        slot_change_ids[poke_data[roster_loop]["slotId"]] = poke_data[roster_loop]["changeId"];
-
-
-        roster_loop++;
-
-    }
-
-    update_loop++;
-    //console.log(update_loop);
-    //console.log(Date("THH:MM:SSZ"));
-
+        slot_change_ids[slotId] = pokeSlot["changeId"];
+    });
 }
 
 //this bit of code fetches the json file every 100 milliseconds, and uses it to update the team
@@ -470,8 +93,363 @@ setInterval(
             })
             .then(function(data) {
                 poke_data = data;
-                //console.log(poke_data);
                 update_();
             });
     },
     100);
+
+function Slot_Null(slotId) {
+    if (sprite_draw == true) {
+        document.getElementById("roster_".concat(slotId, "_sprite")).style.backgroundImage = "url('')";
+    }
+
+    if (pokeball_draw == true) {
+        document.getElementById("ball_sprite_".concat(slotId)).style.backgroundImage = "url('')";
+    }
+
+    if (held_item_draw == true) {
+        document.getElementById("held_item_sprite_".concat(slotId)).style.backgroundImage = "url('')";
+    }
+
+    if (nickname_draw == true) {
+        document.getElementById("roster_".concat(slotId, "_nickname")).innerHTML = "";
+    }
+    if (species_name_draw == true) {
+        document.getElementById("roster_".concat(slotId, "_species")).innerHTML = "";
+    }
+    if (species_name_draw == true) {
+        document.getElementById("roster_".concat(slotId, "_egg")).innerHTML = "";
+    }
+    if (level_draw == true) {
+        document.getElementById("roster_".concat(slotId, "_level")).innerHTML = "";
+    }
+    if (hp_numeric_draw == true) {
+        document.getElementById("roster_".concat(slotId, "_hp_numerical")).innerHTML = "";
+    }
+
+    if (types_draw) {
+        document.getElementById("roster_".concat(slotId, "_type_1_bg")).style.backgroundColor = pokemon_type_colors[0];
+        document.getElementById("roster_".concat(slotId, "_type_1")).innerHTML = pokemon_type_names[0];
+        document.getElementById("roster_".concat(slotId, "_type_2_bg")).style.backgroundColor = pokemon_type_colors[0];
+        document.getElementById("roster_".concat(slotId, "_type_2")).innerHTML = pokemon_type_names[0];
+    }
+
+    if (status_draw == true) {
+        document.getElementById("status_bg_".concat(slotId)).style.backgroundColor = pokemon_status_colors[0];
+        document.getElementById("status_".concat(slotId)).innerHTML = pokemon_status_names[0];
+    }
+
+    if (experience_draw == true) {
+        document.getElementById("roster_".concat(slotId, "_exp_border")).style.borderWidth = 0;
+
+        document.getElementById("roster_".concat(slotId, "_exp")).style.width = 0;
+        document.getElementById("roster_".concat(slotId, "_exp")).style.backgroundColor = 'rgba(0,0,0,0)';
+    }
+
+    if (hp_draw == true) {
+        document.getElementById("roster_".concat(slotId, "_border")).style.borderWidth = 0;
+        document.getElementById("roster_".concat(slotId, "_hp")).style.width = 0;
+        document.getElementById("roster_".concat(slotId, "_hp")).style.backgroundColor = 'rgba(0,0,0,0)';
+    }
+
+    if (gender_draw == true) {
+        document.getElementById("roster_gender_".concat(slotId)).style.backgroundColor =
+            pokemon_gender_colors[0];
+        document.getElementById("roster_gender_".concat(slotId)).innerHTML = pokemon_gender_symbols[0];
+    }
+
+    if (moves_draw == true) {
+        var moves_draw_loop = 1;
+        while (moves_draw_loop < 5) {
+            document.getElementById("roster_move_".concat(moves_draw_loop, "_", slotId)).innerHTML = "";
+            document.getElementById("roster_move_".concat(moves_draw_loop, "_bg_", slotId)).style.backgroundColor = pokemon_type_colors[0];
+
+            moves_draw_loop++;
+        }
+    }
+}
+
+function Slot_Egg(slotId) {
+    //this is a special case for if the pokemon is an egg. It clears out most values and types Egg in a special name holder
+    if (sprite_draw == true) {
+        document.getElementById("roster_".concat(slotId, "_sprite")).style.backgroundImage = "url('".concat(pokemon_normal_sprites_root, egg_filename, "')");
+    }
+
+    if (pokeball_draw == true) {
+        document.getElementById("ball_sprite_".concat(slotId)).style.backgroundImage = "url('')";
+    }
+
+    if (held_item_draw == true) {
+        document.getElementById("held_item_sprite_".concat(slotId)).style.backgroundImage = "url('')";
+    }
+
+    if (nickname_draw == true) {
+        document.getElementById("roster_".concat(slotId, "_nickname")).innerHTML = "";
+    }
+    if (species_name_draw == true) {
+        document.getElementById("roster_".concat(slotId, "_species")).innerHTML = "";
+    }
+    if (species_name_draw == true) {
+        document.getElementById("roster_".concat(slotId, "_egg")).innerHTML = "Egg";
+    }
+    if (level_draw == true) {
+        document.getElementById("roster_".concat(slotId, "_level")).innerHTML = "";
+    }
+    if (hp_numeric_draw == true) {
+        document.getElementById("roster_".concat(slotId, "_hp_numerical")).innerHTML = "";
+    }
+
+    if (types_draw) {
+        document.getElementById("roster_".concat(slotId, "_type_1_bg")).style.backgroundColor = pokemon_type_colors[0];
+        document.getElementById("roster_".concat(slotId, "_type_1")).innerHTML = pokemon_type_names[0];
+        document.getElementById("roster_".concat(slotId, "_type_2_bg")).style.backgroundColor = pokemon_type_colors[0];
+        document.getElementById("roster_".concat(slotId, "_type_2")).innerHTML = pokemon_type_names[0];
+    }
+
+    if (status_draw == true) {
+        document.getElementById("status_bg_".concat(slotId)).style.backgroundColor = pokemon_status_colors[0];
+        document.getElementById("status_".concat(slotId)).innerHTML = pokemon_status_names[0];
+    }
+
+    if (experience_draw == true) {
+        document.getElementById("roster_".concat(slotId, "_exp_border")).style.borderWidth = 0;
+
+        document.getElementById("roster_".concat(slotId, "_exp")).style.width = 0;
+        document.getElementById("roster_".concat(slotId, "_exp")).style.backgroundColor = 'rgba(0,0,0,0)';
+    }
+
+    if (hp_draw == true) {
+        document.getElementById("roster_".concat(slotId, "_border")).style.borderWidth = 0;
+        document.getElementById("roster_".concat(slotId, "_hp")).style.width = 0;
+        document.getElementById("roster_".concat(slotId, "_hp")).style.backgroundColor = 'rgba(0,0,0,0)';
+    }
+
+    if (gender_draw == true) {
+        document.getElementById("roster_gender_".concat(slotId)).style.backgroundColor =
+            pokemon_gender_colors[0];
+        document.getElementById("roster_gender_".concat(slotId)).innerHTML = pokemon_gender_symbols[0];
+    }
+
+
+    if (moves_draw == true) {
+        var moves_draw_loop = 1;
+        while (moves_draw_loop < 5) {
+            document.getElementById("roster_move_".concat(moves_draw_loop, "_", slotId)).innerHTML = "";
+            document.getElementById("roster_move_".concat(moves_draw_loop, "_bg_", slotId)).style.backgroundColor = pokemon_type_colors[0];
+
+            moves_draw_loop++;
+        }
+    }
+}
+
+function Slot_Pokemon(slotId, partyPokemon) {
+
+    if (species_name_draw == true) {
+        document.getElementById("roster_".concat(slotId, "_egg")).innerHTML = "";
+    }
+    if (sprite_draw == true) {
+        if (partyPokemon["species"] == 201) {
+
+            // if the pokemon is an unown, looks at unown sprite
+            var pid_binary = partyPokemon["pid"].toString(2);
+            var unown_binary = pid_binary.slice(pid_binary.length - 26, pid_binary.length - 24) + pid_binary.slice(pid_binary.length - 18, pid_binary.length - 16) + pid_binary.slice(pid_binary.length - 10, pid_binary.length - 8) + pid_binary.slice(pid_binary.length - 2, pid_binary.length);
+            var unown_dec = parseInt(unown_binary, 2);
+            var unown_mod = (unown_dec % 28);
+            console.log(unown_mod);
+
+            if (partyPokemon["isShiny"] == false) {
+                document.getElementById("roster_".concat(slotId, "_sprite")).style.backgroundImage = "url('".concat(pokemon_normal_sprites_root, unown_file_names[unown_mod].toLowerCase(), pokemon_sprites_extension, "')");
+                document.getElementById("roster_shiny_".concat(slotId)).innerHTML = "";
+            } else {
+                document.getElementById("roster_".concat(slotId, "_sprite")).style.backgroundImage = "url('".concat(pokemon_shiny_sprites_root, unown_file_names[unown_mod].toLowerCase(), pokemon_sprites_extension, "')");
+                document.getElementById("roster_shiny_".concat(slotId)).innerHTML = "&#11088";
+            }
+
+        } else {
+            //checks if pokemon is normal or shiny, and if shiny loads the shiny sprite.
+            if (partyPokemon["isShiny"] == false) {
+                document.getElementById("roster_".concat(slotId, "_sprite")).style.backgroundImage = "url('".concat(pokemon_normal_sprites_root, pokemon_file_names[partyPokemon["species"]].toLowerCase(), pokemon_sprites_extension, "')");
+                document.getElementById("roster_shiny_".concat(slotId)).innerHTML = "";
+            } else {
+                document.getElementById("roster_".concat(slotId, "_sprite")).style.backgroundImage = "url('".concat(pokemon_shiny_sprites_root, pokemon_file_names[partyPokemon["species"]].toLowerCase(), pokemon_file_extensions, "')");
+                document.getElementById("roster_shiny_".concat(slotId)).innerHTML = "&#11088";
+            }
+
+        }
+
+    }
+
+    //This code loads the pokeball the pokemon was caught in
+    if (pokeball_draw == true) {
+        document.getElementById("ball_sprite_".concat(slotId)).style.backgroundImage = "url('".concat(item_images_root, gen_3_items[partyPokemon["pokeball"]].toLowerCase(), item_extension, "')");
+    }
+
+    if (held_item_draw == true) {
+        document.getElementById("held_item_sprite_".concat(slotId)).style.backgroundImage = "url('".concat(item_images_root, gen_3_items[partyPokemon["heldItem"]].toLowerCase(), item_extension, "')");
+    }
+
+    //Calculates the gender of the pokemon from the PID
+    if (gender_draw == true) {
+        var pid_binary = partyPokemon["pid"].toString(2);
+        var gender_binary = pid_binary.slice(pid_binary.length - 8, pid_binary.length);
+        var gender_bit_dec_10 = parseInt(gender_binary, 2);
+
+        if (gender_threshold_values[partyPokemon["species"]] == 0) {
+            document.getElementById("roster_gender_".concat(slotId)).style.backgroundColor = pokemon_gender_colors[2];
+            document.getElementById("roster_gender_".concat(slotId)).innerHTML = pokemon_gender_symbols[2];
+        } //always Male
+        else if (gender_threshold_values[partyPokemon["species"]] == 254) {
+            document.getElementById("roster_gender_".concat(slotId)).style.backgroundColor = pokemon_gender_colors[1];
+            document.getElementById("roster_gender_".concat(slotId)).innerHTML = pokemon_gender_symbols[1];
+        } //always Female
+        else if (gender_threshold_values[partyPokemon["species"]] == 255) {
+            document.getElementById("roster_gender_".concat(slotId)).style.backgroundColor = pokemon_gender_colors[0];
+            document.getElementById("roster_gender_".concat(slotId)).innerHTML = pokemon_gender_symbols[0];
+        } //gender neutral
+        else {
+
+            if (gender_bit_dec_10 < gender_threshold_values[partyPokemon["species"]]) {
+                document.getElementById("roster_gender_".concat(slotId)).style.backgroundColor = pokemon_gender_colors[1];
+                document.getElementById("roster_gender_".concat(slotId)).innerHTML = pokemon_gender_symbols[1];
+            } else {
+                document.getElementById("roster_gender_".concat(slotId)).style.backgroundColor = pokemon_gender_colors[2];
+                document.getElementById("roster_gender_".concat(slotId)).innerHTML = pokemon_gender_symbols[2];
+            }
+
+        }
+
+    }
+
+    //reads the pokemon's nickname, turns it into a standard format of only first letter capital, and then prints that to the nickname field.
+    if (nickname_draw == true) {
+        var nickname_std = partyPokemon["nickname"].charAt(0).toUpperCase() + partyPokemon["nickname"].slice(1).toLowerCase();
+        document.getElementById("roster_".concat(slotId, "_nickname")).innerHTML = nickname_std;
+    }
+
+    //prints the pokemon's species name into the species field
+    if (species_name_draw == true) {
+        document.getElementById("roster_".concat(slotId, "_egg")).innerHTML = "";
+        document.getElementById("roster_".concat(slotId, "_species")).innerHTML = partyPokemon["speciesName"];
+    }
+
+    //prints the pokemon's level into the Level field.
+    if (level_draw == true) {
+        document.getElementById("roster_".concat(slotId, "_level")).innerHTML = "Lv. ".concat(partyPokemon["level"]);
+    }
+
+    //this looks up the two types the pokemon may have, and then prints them into the type fields, while also changing the background colors of the types.
+    if (types_draw == true) {
+        document.getElementById("roster_".concat(slotId, "_type_1_bg")).style.backgroundColor = pokemon_type_colors[pokemon_type_1_lookup[partyPokemon["species"]]];
+        document.getElementById("roster_".concat(slotId, "_type_1")).innerHTML = pokemon_type_names[pokemon_type_1_lookup[partyPokemon["species"]]].toUpperCase();
+        document.getElementById("roster_".concat(slotId, "_type_2_bg")).style.backgroundColor = pokemon_type_colors[pokemon_type_2_lookup[partyPokemon["species"]]];
+        document.getElementById("roster_".concat(slotId, "_type_2")).innerHTML = pokemon_type_names[pokemon_type_2_lookup[partyPokemon["species"]]].toUpperCase();
+    }
+
+    //this code deals with drawing the HP bar and text
+    if (hp_draw == true) {
+        document.getElementById("roster_".concat(slotId, "_border")).style.borderWidth = 2;
+
+        //this code calculates the health bar length
+        var health_ = partyPokemon["hp"]["current"] / partyPokemon["hp"]["max"];
+        var health_width = health_ * health_bar_width;
+
+        document.getElementById("roster_".concat(slotId, "_hp")).style.width = health_width;
+        if (health_ > 0.5) {
+            document.getElementById("roster_".concat(slotId, "_hp")).style.backgroundColor = 'rgba(122, 255, 170,255)';
+        }
+        if (health_ <= 0.5) {
+            document.getElementById("roster_".concat(slotId, "_hp")).style.backgroundColor = 'rgba(243, 231, 62, 255)';
+        }
+        if (health_ <= 0.2) {
+            document.getElementById("roster_".concat(slotId, "_hp")).style.backgroundColor = 'rgba(211, 78, 80, 255)';
+        }
+    }
+
+    if (hp_numeric_draw == true) {
+        document.getElementById("roster_".concat(slotId, "_hp_numerical")).innerHTML = "&nbsp".concat(partyPokemon["hp"]["current"], "/", partyPokemon["hp"]["max"]);
+    }
+
+    //pokemon status conditions.
+    //if pokemon is fainted, render fainted
+    if (status_draw == false) {
+        if (partyPokemon["hp"]["current"] == 0) {
+            document.getElementById("status_".concat(slotId)).innerHTML = pokemon_status_names[7];
+            document.getElementById("status_bg_".concat(slotId)).style.backgroundColor = pokemon_status_colors[7];
+        } else if (partyPokemon["status"]["psn"] == true) {
+            document.getElementById("status_".concat(slotId)).innerHTML = pokemon_status_names[1];
+            document.getElementById("status_bg_".concat(slotId)).style.backgroundColor = pokemon_status_colors[1];
+        } else if (partyPokemon["status"]["frz"] == true) {
+            document.getElementById("status_".concat(slotId)).innerHTML = pokemon_status_names[2];
+            document.getElementById("status_bg_".concat(slotId)).style.backgroundColor = pokemon_status_colors[2];
+        } else if (partyPokemon["status"]["slp"] == true) {
+            document.getElementById("status_".concat(slotId)).innerHTML = pokemon_status_names[3];
+            document.getElementById("status_bg_".concat(slotId)).style.backgroundColor = pokemon_status_colors[3];
+        } else if (partyPokemon["status"]["par"] == true) {
+            document.getElementById("status_".concat(slotId)).innerHTML = pokemon_status_names[4];
+            document.getElementById("status_bg_".concat(slotId)).style.backgroundColor = pokemon_status_colors[4];
+        } else if (partyPokemon["status"]["bps"] == true) {
+            document.getElementById("status_".concat(slotId)).innerHTML = pokemon_status_names[5];
+            document.getElementById("status_bg_".concat(slotId)).style.backgroundColor = pokemon_status_colors[5];
+        } else if (partyPokemon["status"]["brn"] == true) {
+            document.getElementById("status_".concat(slotId)).innerHTML = pokemon_status_names[6];
+            document.getElementById("status_bg_".concat(slotId)).style.backgroundColor = pokemon_status_colors[6];
+        } else if (partyPokemon["pokerus"] > 0) {
+            document.getElementById("status_".concat(slotId)).innerHTML = pokemon_status_names[8];
+            document.getElementById("status_bg_".concat(slotId)).style.backgroundColor = pokemon_status_colors[8];
+        } else {
+            document.getElementById("status_".concat(slotId)).innerHTML = pokemon_status_names[0];
+            document.getElementById("status_bg_".concat(slotId)).style.backgroundColor = pokemon_status_colors[0];
+        }
+
+    }
+
+
+    // Erratic	0    Fast	1    Medium Fast	2    Medium Slow	3    Slow	4    Fluctuating	5
+    //calculates the current exp in the current level, and translates that to the length of the experience bar. First it looks up the level curve the pokemon is going to draw values from, then uses that with the pokemon's current level to calculate the variance.
+    if (experience_draw == true) {
+        document.getElementById("roster_".concat(slotId, "_exp_border")).style.borderWidth = 2;
+        document.getElementById("roster_".concat(slotId, "_exp")).style.backgroundColor = 'rgba(75, 210, 244,255)';
+
+        if (pokemon_level_curve[partyPokemon["species"]] == 0) {
+            var exp_ = partyPokemon["exp"] - level_curve_erratic[partyPokemon["level"]];
+            var exp_width = ((partyPokemon["exp"] - level_curve_erratic[partyPokemon["level"]]) / (level_curve_erratic[partyPokemon["level"] + 1] - level_curve_erratic[partyPokemon["level"]])) * exp_bar_width;
+        } else if (pokemon_level_curve[partyPokemon["species"]] == 1) {
+            var exp_ = partyPokemon["exp"] - level_curve_fast[partyPokemon["level"]];
+            var exp_width = ((partyPokemon["exp"] - level_curve_fast[partyPokemon["level"]]) / (level_curve_fast[partyPokemon["level"] + 1] - level_curve_fast[partyPokemon["level"]])) * exp_bar_width;
+        } else if (pokemon_level_curve[partyPokemon["species"]] == 2) {
+            var exp_ = partyPokemon["exp"] - level_curve_medium_fast[partyPokemon["level"]];
+            var exp_width = ((partyPokemon["exp"] - level_curve_medium_fast[partyPokemon["level"]]) / (level_curve_medium_fast[partyPokemon["level"] + 1] - level_curve_medium_fast[partyPokemon["level"]])) * exp_bar_width;
+        } else if (pokemon_level_curve[partyPokemon["species"]] == 3) {
+            var exp_ = partyPokemon["exp"] - level_curve_medium_slow[partyPokemon["level"]];
+            var exp_width = ((partyPokemon["exp"] - level_curve_medium_slow[partyPokemon["level"]]) / (level_curve_medium_slow[partyPokemon["level"] + 1] - level_curve_medium_slow[partyPokemon["level"]])) * exp_bar_width;
+        } else if (pokemon_level_curve[partyPokemon["species"]] == 4) {
+            var exp_ = partyPokemon["exp"] - level_curve_slow[partyPokemon["level"]];
+            var exp_width = ((partyPokemon["exp"] - level_curve_slow[partyPokemon["level"]]) / (level_curve_slow[partyPokemon["level"] + 1] - level_curve_slow[partyPokemon["level"]])) * exp_bar_width;
+        } else if (pokemon_level_curve[partyPokemon["species"]] == 5) {
+            var exp_ = partyPokemon["exp"] - level_curve_fluctuating[partyPokemon["level"]];
+            var exp_width = ((partyPokemon["exp"] - level_curve_fluctuating[partyPokemon["level"]]) / (level_curve_fluctuating[partyPokemon["level"] + 1] - level_curve_fluctuating[partyPokemon["level"]])) * exp_bar_width;
+        }
+
+
+        document.getElementById("roster_".concat(slotId, "_exp")).style.width = exp_width;
+    }
+
+
+    if (moves_draw == true) {
+
+        console.log(partyPokemon["move4"]["name"])
+        var moves_draw_loop = 1;
+
+        while (moves_draw_loop < 5) {
+            if (partyPokemon["move".concat(moves_draw_loop)]["name"] !== undefined) {
+                document.getElementById("roster_move_".concat(moves_draw_loop, "_", slotId)).innerHTML = partyPokemon["move".concat(moves_draw_loop)]["name"];
+                document.getElementById("roster_move_".concat(moves_draw_loop, "_bg_", slotId)).style.backgroundColor = pokemon_type_colors[1];
+            } else {
+                document.getElementById("roster_move_".concat(moves_draw_loop, "_", slotId)).innerHTML = "";
+                document.getElementById("roster_move_".concat(moves_draw_loop, "_bg_", slotId)).style.backgroundColor = pokemon_type_colors[0];
+            }
+            moves_draw_loop++;
+        }
+
+    }
+}
