@@ -1,7 +1,7 @@
 # frlgrse_dynamic_pokemon_tracker
 A dynamic pokemon tracker built on javascript intended to be used as a browser source.
 
-This pokemon tracker is designed to work with 3rd generation pokemon core series games, that is Ruby, Sapphire, Emerald, FireRed and LeafGreen. It was originally built for my run of FireRed on Twitch, and as such functionality was built with that in mind, but the current tracker *should* work with all generation III versions. Beta testing is in progress, and if you find bugs, pop them in issues so Zia can patch them (or heck, if you have a patch, let me know so I can patch it in and I'll drop you credit).
+This pokemon tracker is designed to work with 3rd generation pokemon core series games, that is Ruby, Sapphire, Emerald, FireRed and LeafGreen. It was originally built for my run of FireRed on Twitch, and as such functionality was built with that in mind, but the current tracker *should* work with all generation III versions. Beta testing is in progress, and if you find bugs, pop them in issues so Zia can patch them (or heck, if you have a patch, let me know so I can patch it in and I'll drop you credit). It is built on the LUA files built by pokelink, but quickly becoming modified to stip down excess data generation.
 
 This tracker is a free to use project and always will be. Use it in your youtube videos, twitch channel, etc. Alls I ask is credit back to the github project so that other people can find and use it for themselves.
 
