@@ -1,0 +1,1 @@
+To install the party.json file, put it in the 'json_generator' folder, then run the code to get the sample data.
