@@ -26,11 +26,12 @@ Current Functionality
   -pokerus status.
   -in battle status conditions and fainted condition
   -rendering the correct unown letter for caught unown
+  -move roster
+  -configuration files to help in layout of custom overlays
 
 
 Features yet to be added.
--move roster
--configuration files for custom overlays (There is one basic set available on download)
+
 -QoL updates for easily changing certain parameters. 
 
 Known Bugs
