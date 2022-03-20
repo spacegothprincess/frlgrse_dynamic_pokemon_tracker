@@ -1,6 +1,6 @@
 //sets some CSS values from the configuration file
-document.getElementById("roster_".concat(slotId, "_exp_border")).style.width = experience_bar_width;
-document.getElementById("roster_".concat(slotId, "_border")).style.width = health_bar_width;
+document.getElementById("roster_".concat(0, "_exp_border")).style.width = experience_bar_width;
+document.getElementById("roster_".concat(0, "_border")).style.width = health_bar_width;
 
 //creates various arrays of pokemon data looked up by pokemon types for the pokemon types. Each type is assigned a number which is used later to call the correct data from this array.
 
