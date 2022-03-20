@@ -599,7 +599,7 @@ function fn()
 
 			print("================")
 			print("DO NOT CLOSE THIS LUA SCRIPT WINDOW")
-			print("You can minimize it, but do not close it, doing so will stop the emulator sending updates to Pokelink")
+			print("You can minimize it, but do not close it, doing so will stop generating the json files the pokereader needs to work")
 			print("================")
 
 			first_run = false
