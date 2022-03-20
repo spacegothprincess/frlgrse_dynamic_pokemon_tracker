@@ -1,30 +1,29 @@
 @charset "UTF-8";
 
-@media (max-width: 4000px){
+@media (max-width: 4000px) {
 
-body
-{
-background-color:rgba(0, 0, 0, 0);
-margin:0px;
-border:0px;
-padding:0px;
-}
+    body {
+        background-color: rgba(0, 0, 0, 0);
+        margin: 0px;
+        border: 0px;
+        padding: 0px;
+    }
 
-div.front_end_roster{
-background-image:url("template_bg-01.png");
-background-position:left top;
-width:1920px;
-height:1080px;
-color:#FFFFFF;
-font-family: 'Courier Prime', monospace;
-font-size: 15px;
-font-weight: 400;
-text-align:left;
-z-index:-10;
-position:relative;
-}
+    div.front_end_roster {
+        background-image: url("template_bg-01.png");
+        background-position: left top;
+        width: 1920px;
+        height: 1080px;
+        color: #FFFFFF;
+        font-family: 'Courier Prime', monospace;
+        font-size: 15px;
+        font-weight: 400;
+        text-align: left;
+        z-index: -10;
+        position: relative;
+    }
 
-/*div.pokemon_slot{
+    /*div.pokemon_slot{
 border-width:1px;
 border-style:solid;
 border-color:#000000;
@@ -34,420 +33,422 @@ border-color:#000000;
 
 
 
-div.roster_1_{
-  width:450px;
-  height:115px;
-  position:absolute;
-  top:50px;
-  left:50px;
-}
+    div.roster_1_ {
+        width: 450px;
+        height: 115px;
+        position: absolute;
+        top: 50px;
+        left: 50px;
+    }
 
-div.roster_2_{
-  width:450px;
-  height:115px;
-  position:absolute;
-  top:50px;
-  left:550px;
-}
+    div.roster_2_ {
+        width: 450px;
+        height: 115px;
+        position: absolute;
+        top: 50px;
+        left: 550px;
+    }
 
-div.roster_3_{
-  width:450px;
-  height:115px;
-  position:absolute;
-  top:275px;
-  left:50px;
-}
+    div.roster_3_ {
+        width: 450px;
+        height: 115px;
+        position: absolute;
+        top: 275px;
+        left: 50px;
+    }
 
-div.roster_4_{
-  width:450px;
-  height:115px;
-  position:absolute;
-  top:275px;
-  left:550px;
-}
+    div.roster_4_ {
+        width: 450px;
+        height: 115px;
+        position: absolute;
+        top: 275px;
+        left: 550px;
+    }
 
-div.roster_5_{
-  width:450px;
-  height:115px;
-  position:absolute;
-  top:500px;
-  left:50px;
-}
+    div.roster_5_ {
+        width: 450px;
+        height: 115px;
+        position: absolute;
+        top: 500px;
+        left: 50px;
+    }
 
-div.roster_6_{
-  width:450px;
-  height:115px;
-  position:absolute;
-  top:500px;
-  left:550px;
-}
+    div.roster_6_ {
+        width: 450px;
+        height: 115px;
+        position: absolute;
+        top: 500px;
+        left: 550px;
+    }
 
-div.roster_sprite{
-background-repeat:no-repeat;
-background-position:center center;
-width:225px;
-height:225px;
-position:absolute;
-top:-55px;
-left:-55px;
-z-index:-10;
-}
+    div.roster_sprite {
+        background-repeat: no-repeat;
+        background-position: center center;
+        width: 225px;
+        height: 225px;
+        position: absolute;
+        top: -55px;
+        left: -55px;
+        z-index: -10;
+    }
 
-div.ball_sprite{
-background-repeat:no-repeat;
-background-position:center center;
-width:24px;
-height:24px;
-position:absolute;
-top:1px;
-left:425px;
-}
+    div.ball_sprite {
+        background-repeat: no-repeat;
+        background-position: center center;
+        width: 24px;
+        height: 24px;
+        position: absolute;
+        top: 1px;
+        left: 425px;
+    }
 
-div.roster_gender{
-background-color:rgba(255, 255, 255, 255);
-font-family: 'Courier Prime', monospace;
-font-weight:bold;
-font-size:16px;
-text-align:center;
-color:#ffffff;
-width:18px;
-height:18px;
-position:absolute;
-top:4px;
-left:394px;
-border-radius: 10px;
-margin-left:10px;
-}
+    div.roster_gender {
+        background-color: rgba(255, 255, 255, 255);
+        font-family: 'Courier Prime', monospace;
+        font-weight: bold;
+        font-size: 16px;
+        text-align: center;
+        color: #ffffff;
+        width: 18px;
+        height: 18px;
+        position: absolute;
+        top: 4px;
+        left: 394px;
+        border-radius: 10px;
+        margin-left: 10px;
+    }
 
-div.held_item_sprite{
-background-repeat:no-repeat;
-background-position:center center;
-width:24px;
-height:24px;
-position:absolute;
-top:90px;
-left:90px;
-}
+    div.held_item_sprite {
+        background-repeat: no-repeat;
+        background-position: center center;
+        width: 24px;
+        height: 24px;
+        position: absolute;
+        top: 90px;
+        left: 90px;
+    }
 
-div.roster_shiny{
-background-color:rgba(255, 255, 0, 0);
-font-family: 'Courier Prime', monospace;
-font-weight:bold;
-font-size:16px;
-text-align:center;
-color:#ffffff;
-width:24px;
-height:24px;
-position:absolute;
-top:1px;
-left:369px;
-border-radius: 10px;
-margin-left:10px;
-}
-
-
-
-div.roster_nickname{
-font-family: 'Mirza', sans-serif;
-font-weight:400;
-font-size:38px;
-width:200px;
-height:30px;
-position:absolute;
-top:-9px;
-left:125px;
-}
-
-div.roster_species{
-font-family: 'Mirza', sans-serif;
-font-weight:400;
-font-size:28px;
-width:200px;
-height:30px;
-position:absolute;
-top:27px;
-left:125px;
-}
-
-div.roster_egg{
-font-family: 'Mirza', sans-serif;
-font-weight:400;
-font-size:40px;
-width:200px;
-height:30px;
-position:absolute;
-top:29px;
-left:135px;
-}
-
-div.roster_level{
-font-family: 'Mirza', sans-serif;
-font-weight:400;
-font-size:28px;
-width:200px;
-height:30px;
-position:absolute;
-top:54px;
-left:125px;
-}
-
-div.roster_type_1_bg{
-background-color:rgba(0,0,0,0);
-width:63px;
-height:16px;
-position:absolute;
-top:27px; /*27*/
-left:382px;
-border-radius: 4px;
-}
-
-div.roster_type_1{
-background-color:rgba(0,0,0,0);
-font-family: 'Mirza', sans-serif;
-font-weight:700;
-font-size:17px;
-text-align:center;
-color:#ffffff;
-width:63px;
-height:16px;
-position:absolute;
-top:22px; /*22*/
-left:382px;
-}
-
-div.roster_type_2_bg{
-background-color:rgba(0,0,0,0);
-width:63px;
-height:16px;
-position:absolute;
-top:46px;
-left:382px;
-border-radius: 4px;
-}
-
-div.roster_type_2{
-background-color:rgba(0,0,0,0);
-font-family: 'Mirza', sans-serif;
-font-weight:700;
-font-size:17px;
-text-align:center;
-color:#ffffff;
-width:63px;
-height:16px;
-position:absolute;
-top:41px;
-left:382px;
-
-}
+    div.roster_shiny {
+        background-color: rgba(255, 255, 0, 0);
+        font-family: 'Courier Prime', monospace;
+        font-weight: bold;
+        font-size: 16px;
+        text-align: center;
+        color: #ffffff;
+        width: 24px;
+        height: 24px;
+        position: absolute;
+        top: 1px;
+        left: 369px;
+        border-radius: 10px;
+        margin-left: 10px;
+    }
 
 
-div.status_bg{
-background-color:rgba(0, 0, 0, 0);
-width:40px;
-height:16px;
-position:absolute;
-top:67px;
-left:220px;
-border-radius: 4px;
-}
 
-div.status_{
-background-color:rgba(0,0,0,0);
-font-family: 'Mirza', sans-serif;
-font-weight:400;
-font-size:20px;
-text-align:center;
-color:#ffffff;
-width:40px;
-height:16px;
-position:absolute;
-top:60px;
-left:220px;
+    div.roster_nickname {
+        font-family: 'Mirza', sans-serif;
+        font-weight: 400;
+        font-size: 38px;
+        width: 200px;
+        height: 30px;
+        position: absolute;
+        top: -9px;
+        left: 125px;
+    }
 
-}
+    div.roster_species {
+        font-family: 'Mirza', sans-serif;
+        font-weight: 400;
+        font-size: 28px;
+        width: 200px;
+        height: 30px;
+        position: absolute;
+        top: 27px;
+        left: 125px;
+    }
 
-div.roster_hp_numerical{
-  font-family: 'Mirza', sans-serif;
-  font-weight:400;
-  font-size:28px;
-  text-align: right;
-  width:100px;
-  height:30px;
-  position:absolute;
-  top:54px;
-  left:344px;
-}
+    div.roster_egg {
+        font-family: 'Mirza', sans-serif;
+        font-weight: 400;
+        font-size: 40px;
+        width: 200px;
+        height: 30px;
+        position: absolute;
+        top: 29px;
+        left: 135px;
+    }
 
-div.roster_hp{
-background-color:rgba(0, 0, 0, 0);
-width:0px;
-height:7px;
-position:absolute;
-top:90px;
-left:124px;
-transition: width 0.2s;
-}
+    div.roster_level {
+        font-family: 'Mirza', sans-serif;
+        font-weight: 400;
+        font-size: 28px;
+        width: 200px;
+        height: 30px;
+        position: absolute;
+        top: 54px;
+        left: 125px;
+    }
 
-div.roster_hp_border{
-background-color:rgba(0,0,0,0);
-width:322px;
-height:7px;
-position:absolute;
-top:88px;
-left:122px;
-border-style:solid;
-border-width:0px;
-border-color:#F580B4;
-}
+    div.roster_type_1_bg {
+        background-color: rgba(0, 0, 0, 0);
+        width: 63px;
+        height: 16px;
+        position: absolute;
+        top: 27px;
+        /*27*/
+        left: 382px;
+        border-radius: 4px;
+    }
 
-div.roster_exp{
-background-color:rgba(0, 0, 0, 0);
+    div.roster_type_1 {
+        background-color: rgba(0, 0, 0, 0);
+        font-family: 'Mirza', sans-serif;
+        font-weight: 700;
+        font-size: 17px;
+        text-align: center;
+        color: #ffffff;
+        width: 63px;
+        height: 16px;
+        position: absolute;
+        top: 22px;
+        /*22*/
+        left: 382px;
+    }
 
-width:0px;
-height:7px;
-position:absolute;
-top:104px;
-left:124px;
+    div.roster_type_2_bg {
+        background-color: rgba(0, 0, 0, 0);
+        width: 63px;
+        height: 16px;
+        position: absolute;
+        top: 46px;
+        left: 382px;
+        border-radius: 4px;
+    }
 
-transition: width 0.2s;
+    div.roster_type_2 {
+        background-color: rgba(0, 0, 0, 0);
+        font-family: 'Mirza', sans-serif;
+        font-weight: 700;
+        font-size: 17px;
+        text-align: center;
+        color: #ffffff;
+        width: 63px;
+        height: 16px;
+        position: absolute;
+        top: 41px;
+        left: 382px;
 
-}
-
-div.roster_exp_border{
-background-color:rgba(0,0,0,0);
-width:322px;
-height:7px;
-position:absolute;
-top:102px;
-left:122px;
-border-style:solid;
-border-width:0px;
-border-color:#F580B4;
-}
-
-div.roster_move_1_bg{
-background-color:rgba(150, 125, 0, 255);
-width:220px;
-height:22px;
-position:absolute;
-top:123px;
-left:2px;
-border-radius: 4px;
-}
-
-div.roster_move_1{
-background-color:rgba(0,0,0,0);
-font-family: 'Mirza', sans-serif;
-font-weight:400;
-font-size:20px;
-text-align:center;
-color:#ffffff;
-width:220px;
-height:16px;
-position:absolute;
-top:119px;
-left:2px;
-}
-
-div.roster_move_2_bg{
-background-color:rgba(150, 125, 0, 255);
-width:220px;
-height:22px;
-position:absolute;
-top:123px;
-left:228px;
-border-radius: 4px;
-}
-
-div.roster_move_2{
-background-color:rgba(0,0,0,0);
-font-family: 'Mirza', sans-serif;
-font-weight:400;
-font-size:20px;
-text-align:center;
-color:#ffffff;
-width:220px;
-height:16px;
-position:absolute;
-top:119px;
-left:228px;
-}
-
-div.roster_move_3_bg{
-background-color:rgba(150, 125, 0, 255);
-width:220px;
-height:22px;
-position:absolute;
-top:150px;
-left:2px;
-border-radius: 4px;
-}
-
-div.roster_move_3{
-background-color:rgba(0,0,0,0);
-font-family: 'Mirza', sans-serif;
-font-weight:400;
-font-size:20px;
-text-align:center;
-color:#ffffff;
-width:220px;
-height:16px;
-position:absolute;
-top:146px;
-left:2px;
-}
-
-div.roster_move_4_bg{
-background-color:rgba(150, 125, 0, 255);
-width:220px;
-height:22px;
-position:absolute;
-top:150px;
-left:228px;
-border-radius: 4px;
-}
-
-div.roster_move_4{
-background-color:rgba(0,0,0,0);
-font-family: 'Mirza', sans-serif;
-font-weight:400;
-font-size:20px;
-text-align:center;
-color:#ffffff;
-width:220px;
-height:16px;
-position:absolute;
-top:146px;
-left:228px;
-}
+    }
 
 
-/*input styles*/
+    div.status_bg {
+        background-color: rgba(0, 0, 0, 0);
+        width: 40px;
+        height: 16px;
+        position: absolute;
+        top: 67px;
+        left: 220px;
+        border-radius: 4px;
+    }
+
+    div.status_ {
+        background-color: rgba(0, 0, 0, 0);
+        font-family: 'Mirza', sans-serif;
+        font-weight: 400;
+        font-size: 20px;
+        text-align: center;
+        color: #ffffff;
+        width: 40px;
+        height: 16px;
+        position: absolute;
+        top: 60px;
+        left: 220px;
+
+    }
+
+    div.roster_hp_numerical {
+        font-family: 'Mirza', sans-serif;
+        font-weight: 400;
+        font-size: 28px;
+        text-align: right;
+        width: 100px;
+        height: 30px;
+        position: absolute;
+        top: 54px;
+        left: 344px;
+    }
+
+    div.roster_hp {
+        background-color: rgba(0, 0, 0, 0);
+        width: 0px;
+        height: 7px;
+        position: absolute;
+        top: 90px;
+        left: 124px;
+        transition: width 0.2s;
+    }
+
+    div.roster_hp_border {
+        background-color: rgba(0, 0, 0, 0);
+        width: 322px;
+        height: 7px;
+        position: absolute;
+        top: 88px;
+        left: 122px;
+        border-style: solid;
+        border-width: 0px;
+        border-color: #F580B4;
+    }
+
+    div.roster_exp {
+        background-color: rgba(0, 0, 0, 0);
+
+        width: 0px;
+        height: 7px;
+        position: absolute;
+        top: 104px;
+        left: 124px;
+
+        transition: width 0.2s;
+
+    }
+
+    div.roster_exp_border {
+        background-color: rgba(0, 0, 0, 0);
+        width: 322px;
+        height: 7px;
+        position: absolute;
+        top: 102px;
+        left: 122px;
+        border-style: solid;
+        border-width: 0px;
+        border-color: #F580B4;
+    }
+
+    div.roster_move_1_bg {
+        background-color: rgba(150, 125, 0, 255);
+        width: 220px;
+        height: 22px;
+        position: absolute;
+        top: 123px;
+        left: 2px;
+        border-radius: 4px;
+    }
+
+    div.roster_move_1 {
+        background-color: rgba(0, 0, 0, 0);
+        font-family: 'Mirza', sans-serif;
+        font-weight: 400;
+        font-size: 20px;
+        text-align: center;
+        color: #ffffff;
+        width: 220px;
+        height: 16px;
+        position: absolute;
+        top: 119px;
+        left: 2px;
+    }
+
+    div.roster_move_2_bg {
+        background-color: rgba(150, 125, 0, 255);
+        width: 220px;
+        height: 22px;
+        position: absolute;
+        top: 123px;
+        left: 228px;
+        border-radius: 4px;
+    }
+
+    div.roster_move_2 {
+        background-color: rgba(0, 0, 0, 0);
+        font-family: 'Mirza', sans-serif;
+        font-weight: 400;
+        font-size: 20px;
+        text-align: center;
+        color: #ffffff;
+        width: 220px;
+        height: 16px;
+        position: absolute;
+        top: 119px;
+        left: 228px;
+    }
+
+    div.roster_move_3_bg {
+        background-color: rgba(150, 125, 0, 255);
+        width: 220px;
+        height: 22px;
+        position: absolute;
+        top: 150px;
+        left: 2px;
+        border-radius: 4px;
+    }
+
+    div.roster_move_3 {
+        background-color: rgba(0, 0, 0, 0);
+        font-family: 'Mirza', sans-serif;
+        font-weight: 400;
+        font-size: 20px;
+        text-align: center;
+        color: #ffffff;
+        width: 220px;
+        height: 16px;
+        position: absolute;
+        top: 146px;
+        left: 2px;
+    }
+
+    div.roster_move_4_bg {
+        background-color: rgba(150, 125, 0, 255);
+        width: 220px;
+        height: 22px;
+        position: absolute;
+        top: 150px;
+        left: 228px;
+        border-radius: 4px;
+    }
+
+    div.roster_move_4 {
+        background-color: rgba(0, 0, 0, 0);
+        font-family: 'Mirza', sans-serif;
+        font-weight: 400;
+        font-size: 20px;
+        text-align: center;
+        color: #ffffff;
+        width: 220px;
+        height: 16px;
+        position: absolute;
+        top: 146px;
+        left: 228px;
+    }
 
 
-/* CSS for the Badges */
+    /*input styles*/
 
-div.badge_roster{
-background-color:(0, 0, 0, 0)
-width:1300px;
-height:300px;
-color:#D97FFF;
-font-family: 'Courier Prime', monospace;
-font-size: 15px;
-font-weight: 400;
-text-align:left;
-z-index:-10;
-position:relative;
-}
 
-img.badge{
-  opacity:0.5;
+    /* CSS for the Badges */
 
-  margin:0px;
-  border:0px;
-  padding: 0px;
-  width:76px;
-  height:76px;
-}
+    div.badge_roster {
+        background-color: (0, 0, 0, 0);
+        width: 1300px;
+        height: 300px;
+        color: #D97FFF;
+        font-family: 'Courier Prime', monospace;
+        font-size: 15px;
+        font-weight: 400;
+        text-align: left;
+        z-index: -10;
+        position: relative;
+    }
+
+    img.badge {
+        opacity: 0.5;
+
+        margin: 0px;
+        border: 0px;
+        padding: 0px;
+        width: 76px;
+        height: 76px;
+    }
 
 }
