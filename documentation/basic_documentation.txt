@@ -1,0 +1,13 @@
+Basic documentation.
+
+So the basics to get this work. I'll make something prettier with formatting by 1 April.
+
+You'll need an emulator or game cartridge reader that can run LUA files, and you'll need to set up a server.  Something like vba-rr should work.
+
+Once you're in the emulator or game reader, run the lua file for the game you're playing, fr = fire red, lg = leaf green.  You should see the script file begin to run, and party.json will begin to update on changes.
+
+The second thing you need to do is set up a server to run the javascript code locally and read the json file. I just use https://chrome.google.com/webstore/detail/web-server-for-chrome/ofhbbkphhbklhfoeikjpcbhemlocgigb?hl=en
+
+Select the root folder of the code, and then start the server.  You'll want to open the filepath using the server address it gives you (should be like 127.0.0.1/8887 or something like that).  Now with the LUA script running and the server running, the open webpage should dynamically update. It pings the json every 100 milliseconds, so it shouldn't be too much a delay.
+
+If you have questions message me here on github or @ me on twitter. I'll get better setup docs done soon! This was never meant to be shared so I just need to work on how to make documentation easy to access!
