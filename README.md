@@ -32,8 +32,9 @@ Current Functionality
 
 Features yet to be added.
 
+-move roster moves all currently pull the bg color for normal type. update moves to pull color for move type.
 -QoL updates for easily changing certain parameters. 
 
 Known Bugs
--When switching pokemon during battle, the team shuffles momentarily
+-When switching pokemon during battle, the team shuffles momentarily.  This is caused by how the game throws data and Im looking to patch it.
 -Occasionally during leveling up, pokemon will dissapear and be replaced with 'none'.
