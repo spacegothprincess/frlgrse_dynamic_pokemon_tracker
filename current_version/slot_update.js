@@ -2,7 +2,7 @@
 var configuration_loop = 1;
 
 while(configuration_loop < 7){
-    document.getElementById("roster_".concat(configuration_loop, "_exp_border")).style.width = experience_bar_width;
+    document.getElementById("roster_".concat(configuration_loop, "_exp_border")).style.width = exp_bar_width;
     document.getElementById("roster_".concat(configuration_loop, "_border")).style.width = health_bar_width;
     
     configuration_loop ++;
