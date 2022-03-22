@@ -1,219 +1,213 @@
 <html>
 
 <head>
-    <title>Pokemon_tracker</title>
-    <script src="configuration.js"></script>
-    <script src="slot_update.js"></script>
+  <title>Pokemon_tracker</title>
+  <script src="configuration.js"></script>
+  <script src="slot_update.js"></script>
 
-    <link href="template.css" rel="stylesheet" type="text/css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Mirza:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="template.css" rel="stylesheet" type="text/css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Mirza:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
 
 <body>
-    <div class="front_end_roster">
+  <div class="front_end_roster">
 
-        <div class="roster_1_">
-            <div class="ball_sprite" id="ball_sprite_1" style="background-image:url('');"></div>
-            <div class="roster_sprite" id="roster_1_sprite" style="background-image:url('');"></div>
-            <div class="held_item_sprite" id="held_item_sprite_1" style="background-image:url('');"></div>
-            <div class="roster_gender" id="roster_gender_1"></div>
-            <div class="roster_shiny" id="roster_shiny_1"></div>
-            <div class="roster_nickname" id="roster_1_nickname"></div>
-            <div class="roster_species" id="roster_1_species"></div>
-            <div class="roster_egg" id="roster_1_egg"></div>
-            <div class="roster_level" id="roster_1_level"></div>
-            <div class="roster_type_1_bg" id="roster_1_type_1_bg"></div>
-            <div class="roster_type_1" id="roster_1_type_1"></div>
-            <div class="roster_type_2_bg" id="roster_1_type_2_bg"></div>
-            <div class="roster_type_2" id="roster_1_type_2"></div>
-            <div class="status_bg" id="status_bg_1"></div>
-            <div class="status_" id="status_1"></div>
-            <div class="roster_hp_numerical" id="roster_1_hp_numerical"></div>
-            <div class="roster_hp" id="roster_1_hp"></div>
-            <div class="roster_hp_border" id="roster_1_border"></div>
-            <div class="roster_exp" id="roster_1_exp"></div>
-            <div class="roster_exp_border" id="roster_1_exp_border"></div>
+    <div class="roster_1_">
+      <div class="ball_sprite" id="ball_sprite_1" style="background-image:url('');"></div>
+      <div class="roster_sprite" id="roster_1_sprite" style="background-image:url('');"></div>
+      <div class="held_item_sprite" id="held_item_sprite_1" style="background-image:url('');"></div>
+      <div class="roster_gender" id="roster_gender_1"></div>
+      <div class="roster_shiny" id="roster_shiny_1"></div>
+      <div class="roster_nickname" id="roster_1_nickname"></div>
+      <div class="roster_species" id="roster_1_species"></div>
+      <div class="roster_egg" id="roster_1_egg"></div>
+      <div class="roster_level" id="roster_1_level"></div>
+      <div class="roster_type_1_bg" id="roster_1_type_1_bg"></div>
+      <div class="roster_type_1" id="roster_1_type_1"></div>
+      <div class="roster_type_2_bg" id="roster_1_type_2_bg"></div>
+      <div class="roster_type_2" id="roster_1_type_2"></div>
+      <div class="status_bg" id="status_bg_1"></div>
+      <div class="status_" id="status_1"></div>
+      <div class="roster_hp_numerical" id="roster_1_hp_numerical"></div>
+      <div class="roster_hp" id="roster_1_hp"></div>
+      <div class="roster_hp_border" id="roster_1_border"></div>
+      <div class="roster_exp" id="roster_1_exp"></div>
+      <div class="roster_exp_border" id="roster_1_exp_border"></div>
 
-            <div class="roster_move_1_bg" id="roster_move_1_bg_1"></div>
-            <div class="roster_move_1" id="roster_move_1_1"></div>
-            <div class="roster_move_2_bg" id="roster_move_2_bg_1"></div>
-            <div class="roster_move_2" id="roster_move_2_1"></div>
-            <div class="roster_move_3_bg" id="roster_move_3_bg_1"></div>
-            <div class="roster_move_3" id="roster_move_3_1"></div>
-            <div class="roster_move_4_bg" id="roster_move_4_bg_1"></div>
-            <div class="roster_move_4" id="roster_move_4_1"></div>
-        </div>
-
-        <div class="roster_2_">
-            <div class="ball_sprite" id="ball_sprite_2" style="background-image:url('');"></div>
-            <div class="roster_sprite" id="roster_2_sprite" style="background-image:url('');"></div>
-            <div class="held_item_sprite" id="held_item_sprite_2" style="background-image:url('');"></div>
-            <div class="roster_gender" id="roster_gender_2"></div>
-            <div class="roster_shiny" id="roster_shiny_2"></div>
-            <div class="roster_nickname" id="roster_2_nickname"></div>
-            <div class="roster_species" id="roster_2_species"></div>
-            <div class="roster_egg" id="roster_2_egg"></div>
-            <div class="roster_level" id="roster_2_level"></div>
-            <div class="roster_type_1_bg" id="roster_2_type_1_bg"></div>
-            <div class="roster_type_1" id="roster_2_type_1"></div>
-            <div class="roster_type_2_bg" id="roster_2_type_2_bg"></div>
-            <div class="roster_type_2" id="roster_2_type_2"></div>
-            <div class="status_bg" id="status_bg_2"></div>
-            <div class="status_" id="status_2"></div>
-            <div class="roster_hp_numerical" id="roster_2_hp_numerical"></div>
-            <div class="roster_hp" id="roster_2_hp"></div>
-            <div class="roster_hp_border" id="roster_2_border"></div>
-            <div class="roster_exp" id="roster_2_exp"></div>
-            <div class="roster_exp_border" id="roster_2_exp_border"></div>
-
-            <div class="roster_move_1_bg" id="roster_move_1_bg_2"></div>
-            <div class="roster_move_1" id="roster_move_1_2"></div>
-            <div class="roster_move_2_bg" id="roster_move_2_bg_2"></div>
-            <div class="roster_move_2" id="roster_move_2_2"></div>
-            <div class="roster_move_3_bg" id="roster_move_3_bg_2"></div>
-            <div class="roster_move_3" id="roster_move_3_2"></div>
-            <div class="roster_move_4_bg" id="roster_move_4_bg_2"></div>
-            <div class="roster_move_4" id="roster_move_4_2"></div>
-        </div>
-
-        <div class="roster_3_">
-            <div class="ball_sprite" id="ball_sprite_3" style="background-image:url('');"></div>
-            <div class="roster_sprite" id="roster_3_sprite" style="background-image:url('');"></div>
-            <div class="held_item_sprite" id="held_item_sprite_3" style="background-image:url('');"></div>
-            <div class="roster_gender" id="roster_gender_3"></div>
-            <div class="roster_shiny" id="roster_shiny_3"></div>
-            <div class="roster_nickname" id="roster_3_nickname"></div>
-            <div class="roster_species" id="roster_3_species"></div>
-            <div class="roster_egg" id="roster_3_egg"></div>
-            <div class="roster_level" id="roster_3_level"></div>
-            <div class="roster_type_1_bg" id="roster_3_type_1_bg"></div>
-            <div class="roster_type_1" id="roster_3_type_1"></div>
-            <div class="roster_type_2_bg" id="roster_3_type_2_bg"></div>
-            <div class="roster_type_2" id="roster_3_type_2"></div>
-            <div class="status_bg" id="status_bg_3"></div>
-            <div class="status_" id="status_3"></div>
-            <div class="roster_hp_numerical" id="roster_3_hp_numerical"></div>
-            <div class="roster_hp" id="roster_3_hp"></div>
-            <div class="roster_hp_border" id="roster_3_border"></div>
-            <div class="roster_exp" id="roster_3_exp"></div>
-            <div class="roster_exp_border" id="roster_3_exp_border"></div>
-
-            <div class="roster_move_1_bg" id="roster_move_1_bg_3"></div>
-            <div class="roster_move_1" id="roster_move_1_3"></div>
-            <div class="roster_move_2_bg" id="roster_move_2_bg_3"></div>
-            <div class="roster_move_2" id="roster_move_2_3"></div>
-            <div class="roster_move_3_bg" id="roster_move_3_bg_3"></div>
-            <div class="roster_move_3" id="roster_move_3_3"></div>
-            <div class="roster_move_4_bg" id="roster_move_4_bg_3"></div>
-            <div class="roster_move_4" id="roster_move_4_3"></div>
-        </div>
-
-        <div class="roster_4_">
-            <div class="ball_sprite" id="ball_sprite_4" style="background-image:url('');"></div>
-            <div class="roster_sprite" id="roster_4_sprite" style="background-image:url('');"></div>
-            <div class="held_item_sprite" id="held_item_sprite_4" style="background-image:url('');"></div>
-            <div class="roster_gender" id="roster_gender_4"></div>
-            <div class="roster_shiny" id="roster_shiny_4"></div>
-            <div class="roster_nickname" id="roster_4_nickname"></div>
-            <div class="roster_species" id="roster_4_species"></div>
-            <div class="roster_egg" id="roster_4_egg"></div>
-            <div class="roster_level" id="roster_4_level"></div>
-            <div class="roster_type_1_bg" id="roster_4_type_1_bg"></div>
-            <div class="roster_type_1" id="roster_4_type_1"></div>
-            <div class="roster_type_2_bg" id="roster_4_type_2_bg"></div>
-            <div class="roster_type_2" id="roster_4_type_2"></div>
-            <div class="status_bg" id="status_bg_4"></div>
-            <div class="status_" id="status_4"></div>
-            <div class="roster_hp_numerical" id="roster_4_hp_numerical"></div>
-            <div class="roster_hp" id="roster_4_hp"></div>
-            <div class="roster_hp_border" id="roster_4_border"></div>
-            <div class="roster_exp" id="roster_4_exp"></div>
-            <div class="roster_exp_border" id="roster_4_exp_border"></div>
-
-            <div class="roster_move_1_bg" id="roster_move_1_bg_4"></div>
-            <div class="roster_move_1" id="roster_move_1_4"></div>
-            <div class="roster_move_2_bg" id="roster_move_2_bg_4"></div>
-            <div class="roster_move_2" id="roster_move_2_4"></div>
-            <div class="roster_move_3_bg" id="roster_move_3_bg_4"></div>
-            <div class="roster_move_3" id="roster_move_3_4"></div>
-            <div class="roster_move_4_bg" id="roster_move_4_bg_4"></div>
-            <div class="roster_move_4" id="roster_move_4_4"></div>
-        </div>
-
-        <div class="roster_5_">
-            <div class="ball_sprite" id="ball_sprite_5" style="background-image:url('');"></div>
-            <div class="roster_sprite" id="roster_5_sprite" style="background-image:url('');"></div>
-            <div class="held_item_sprite" id="held_item_sprite_5" style="background-image:url('');"></div>
-            <div class="roster_gender" id="roster_gender_5"></div>
-            <div class="roster_shiny" id="roster_shiny_5"></div>
-            <div class="roster_nickname" id="roster_5_nickname"></div>
-            <div class="roster_species" id="roster_5_species"></div>
-            <div class="roster_egg" id="roster_5_egg"></div>
-            <div class="roster_level" id="roster_5_level"></div>
-            <div class="roster_type_1_bg" id="roster_5_type_1_bg"></div>
-            <div class="roster_type_1" id="roster_5_type_1"></div>
-            <div class="roster_type_2_bg" id="roster_5_type_2_bg"></div>
-            <div class="roster_type_2" id="roster_5_type_2"></div>
-            <div class="status_bg" id="status_bg_5"></div>
-            <div class="status_" id="status_5"></div>
-            <div class="roster_hp_numerical" id="roster_5_hp_numerical"></div>
-            <div class="roster_hp" id="roster_5_hp"></div>
-            <div class="roster_hp_border" id="roster_5_border"></div>
-            <div class="roster_exp" id="roster_5_exp"></div>
-            <div class="roster_exp_border" id="roster_5_exp_border"></div>
-
-            <div class="roster_move_1_bg" id="roster_move_1_bg_5"></div>
-            <div class="roster_move_1" id="roster_move_1_5"></div>
-            <div class="roster_move_2_bg" id="roster_move_2_bg_5"></div>
-            <div class="roster_move_2" id="roster_move_2_5"></div>
-            <div class="roster_move_3_bg" id="roster_move_3_bg_5"></div>
-            <div class="roster_move_3" id="roster_move_3_5"></div>
-            <div class="roster_move_4_bg" id="roster_move_4_bg_5"></div>
-            <div class="roster_move_4" id="roster_move_4_5"></div>
-        </div>
-
-        <div class="roster_6_">
-            <div class="ball_sprite" id="ball_sprite_6" style="background-image:url('');"></div>
-            <div class="roster_sprite" id="roster_6_sprite" style="background-image:url('');"></div>
-            <div class="held_item_sprite" id="held_item_sprite_6" style="background-image:url('');"></div>
-            <div class="roster_gender" id="roster_gender_6"></div>
-            <div class="roster_shiny" id="roster_shiny_6"></div>
-            <div class="roster_nickname" id="roster_6_nickname"></div>
-            <div class="roster_species" id="roster_6_species"></div>
-            <div class="roster_egg" id="roster_6_egg"></div>
-            <div class="roster_level" id="roster_6_level"></div>
-            <div class="roster_type_1_bg" id="roster_6_type_1_bg"></div>
-            <div class="roster_type_1" id="roster_6_type_1"></div>
-            <div class="roster_type_2_bg" id="roster_6_type_2_bg"></div>
-            <div class="roster_type_2" id="roster_6_type_2"></div>
-            <div class="status_bg" id="status_bg_6"></div>
-            <div class="status_" id="status_6"></div>
-            <div class="roster_hp_numerical" id="roster_6_hp_numerical"></div>
-            <div class="roster_hp" id="roster_6_hp"></div>
-            <div class="roster_hp_border" id="roster_6_border"></div>
-            <div class="roster_exp" id="roster_6_exp"></div>
-            <div class="roster_exp_border" id="roster_6_exp_border"></div>
-
-            <div class="roster_move_1_bg" id="roster_move_1_bg_6"></div>
-            <div class="roster_move_1" id="roster_move_1_6"></div>
-            <div class="roster_move_2_bg" id="roster_move_2_bg_6"></div>
-            <div class="roster_move_2" id="roster_move_2_6"></div>
-            <div class="roster_move_3_bg" id="roster_move_3_bg_6"></div>
-            <div class="roster_move_3" id="roster_move_3_6"></div>
-            <div class="roster_move_4_bg" id="roster_move_4_bg_6"></div>
-            <div class="roster_move_4" id="roster_move_4_6"></div>
-        </div>
-
+      <div class="roster_move_1_bg" id="roster_move_1_bg_1"></div>
+      <div class="roster_move_1" id="roster_move_1_1"></div>
+      <div class="roster_move_2_bg" id="roster_move_2_bg_1"></div>
+      <div class="roster_move_2" id="roster_move_2_1"></div>
+      <div class="roster_move_3_bg" id="roster_move_3_bg_1"></div>
+      <div class="roster_move_3" id="roster_move_3_1"></div>
+      <div class="roster_move_4_bg" id="roster_move_4_bg_1"></div>
+      <div class="roster_move_4" id="roster_move_4_1"></div>
     </div>
 
-    <script>
+    <div class="roster_2_">
+      <div class="ball_sprite" id="ball_sprite_2" style="background-image:url('');"></div>
+      <div class="roster_sprite" id="roster_2_sprite" style="background-image:url('');"></div>
+      <div class="held_item_sprite" id="held_item_sprite_2" style="background-image:url('');"></div>
+      <div class="roster_gender" id="roster_gender_2"></div>
+      <div class="roster_shiny" id="roster_shiny_2"></div>
+      <div class="roster_nickname" id="roster_2_nickname"></div>
+      <div class="roster_species" id="roster_2_species"></div>
+      <div class="roster_egg" id="roster_2_egg"></div>
+      <div class="roster_level" id="roster_2_level"></div>
+      <div class="roster_type_1_bg" id="roster_2_type_1_bg"></div>
+      <div class="roster_type_1" id="roster_2_type_1"></div>
+      <div class="roster_type_2_bg" id="roster_2_type_2_bg"></div>
+      <div class="roster_type_2" id="roster_2_type_2"></div>
+      <div class="status_bg" id="status_bg_2"></div>
+      <div class="status_" id="status_2"></div>
+      <div class="roster_hp_numerical" id="roster_2_hp_numerical"></div>
+      <div class="roster_hp" id="roster_2_hp"></div>
+      <div class="roster_hp_border" id="roster_2_border"></div>
+      <div class="roster_exp" id="roster_2_exp"></div>
+      <div class="roster_exp_border" id="roster_2_exp_border"></div>
 
+      <div class="roster_move_1_bg" id="roster_move_1_bg_2"></div>
+      <div class="roster_move_1" id="roster_move_1_2"></div>
+      <div class="roster_move_2_bg" id="roster_move_2_bg_2"></div>
+      <div class="roster_move_2" id="roster_move_2_2"></div>
+      <div class="roster_move_3_bg" id="roster_move_3_bg_2"></div>
+      <div class="roster_move_3" id="roster_move_3_2"></div>
+      <div class="roster_move_4_bg" id="roster_move_4_bg_2"></div>
+      <div class="roster_move_4" id="roster_move_4_2"></div>
+    </div>
 
-    </script>
+    <div class="roster_3_">
+      <div class="ball_sprite" id="ball_sprite_3" style="background-image:url('');"></div>
+      <div class="roster_sprite" id="roster_3_sprite" style="background-image:url('');"></div>
+      <div class="held_item_sprite" id="held_item_sprite_3" style="background-image:url('');"></div>
+      <div class="roster_gender" id="roster_gender_3"></div>
+      <div class="roster_shiny" id="roster_shiny_3"></div>
+      <div class="roster_nickname" id="roster_3_nickname"></div>
+      <div class="roster_species" id="roster_3_species"></div>
+      <div class="roster_egg" id="roster_3_egg"></div>
+      <div class="roster_level" id="roster_3_level"></div>
+      <div class="roster_type_1_bg" id="roster_3_type_1_bg"></div>
+      <div class="roster_type_1" id="roster_3_type_1"></div>
+      <div class="roster_type_2_bg" id="roster_3_type_2_bg"></div>
+      <div class="roster_type_2" id="roster_3_type_2"></div>
+      <div class="status_bg" id="status_bg_3"></div>
+      <div class="status_" id="status_3"></div>
+      <div class="roster_hp_numerical" id="roster_3_hp_numerical"></div>
+      <div class="roster_hp" id="roster_3_hp"></div>
+      <div class="roster_hp_border" id="roster_3_border"></div>
+      <div class="roster_exp" id="roster_3_exp"></div>
+      <div class="roster_exp_border" id="roster_3_exp_border"></div>
 
+      <div class="roster_move_1_bg" id="roster_move_1_bg_3"></div>
+      <div class="roster_move_1" id="roster_move_1_3"></div>
+      <div class="roster_move_2_bg" id="roster_move_2_bg_3"></div>
+      <div class="roster_move_2" id="roster_move_2_3"></div>
+      <div class="roster_move_3_bg" id="roster_move_3_bg_3"></div>
+      <div class="roster_move_3" id="roster_move_3_3"></div>
+      <div class="roster_move_4_bg" id="roster_move_4_bg_3"></div>
+      <div class="roster_move_4" id="roster_move_4_3"></div>
+    </div>
+
+    <div class="roster_4_">
+      <div class="ball_sprite" id="ball_sprite_4" style="background-image:url('');"></div>
+      <div class="roster_sprite" id="roster_4_sprite" style="background-image:url('');"></div>
+      <div class="held_item_sprite" id="held_item_sprite_4" style="background-image:url('');"></div>
+      <div class="roster_gender" id="roster_gender_4"></div>
+      <div class="roster_shiny" id="roster_shiny_4"></div>
+      <div class="roster_nickname" id="roster_4_nickname"></div>
+      <div class="roster_species" id="roster_4_species"></div>
+      <div class="roster_egg" id="roster_4_egg"></div>
+      <div class="roster_level" id="roster_4_level"></div>
+      <div class="roster_type_1_bg" id="roster_4_type_1_bg"></div>
+      <div class="roster_type_1" id="roster_4_type_1"></div>
+      <div class="roster_type_2_bg" id="roster_4_type_2_bg"></div>
+      <div class="roster_type_2" id="roster_4_type_2"></div>
+      <div class="status_bg" id="status_bg_4"></div>
+      <div class="status_" id="status_4"></div>
+      <div class="roster_hp_numerical" id="roster_4_hp_numerical"></div>
+      <div class="roster_hp" id="roster_4_hp"></div>
+      <div class="roster_hp_border" id="roster_4_border"></div>
+      <div class="roster_exp" id="roster_4_exp"></div>
+      <div class="roster_exp_border" id="roster_4_exp_border"></div>
+
+      <div class="roster_move_1_bg" id="roster_move_1_bg_4"></div>
+      <div class="roster_move_1" id="roster_move_1_4"></div>
+      <div class="roster_move_2_bg" id="roster_move_2_bg_4"></div>
+      <div class="roster_move_2" id="roster_move_2_4"></div>
+      <div class="roster_move_3_bg" id="roster_move_3_bg_4"></div>
+      <div class="roster_move_3" id="roster_move_3_4"></div>
+      <div class="roster_move_4_bg" id="roster_move_4_bg_4"></div>
+      <div class="roster_move_4" id="roster_move_4_4"></div>
+    </div>
+
+    <div class="roster_5_">
+      <div class="ball_sprite" id="ball_sprite_5" style="background-image:url('');"></div>
+      <div class="roster_sprite" id="roster_5_sprite" style="background-image:url('');"></div>
+      <div class="held_item_sprite" id="held_item_sprite_5" style="background-image:url('');"></div>
+      <div class="roster_gender" id="roster_gender_5"></div>
+      <div class="roster_shiny" id="roster_shiny_5"></div>
+      <div class="roster_nickname" id="roster_5_nickname"></div>
+      <div class="roster_species" id="roster_5_species"></div>
+      <div class="roster_egg" id="roster_5_egg"></div>
+      <div class="roster_level" id="roster_5_level"></div>
+      <div class="roster_type_1_bg" id="roster_5_type_1_bg"></div>
+      <div class="roster_type_1" id="roster_5_type_1"></div>
+      <div class="roster_type_2_bg" id="roster_5_type_2_bg"></div>
+      <div class="roster_type_2" id="roster_5_type_2"></div>
+      <div class="status_bg" id="status_bg_5"></div>
+      <div class="status_" id="status_5"></div>
+      <div class="roster_hp_numerical" id="roster_5_hp_numerical"></div>
+      <div class="roster_hp" id="roster_5_hp"></div>
+      <div class="roster_hp_border" id="roster_5_border"></div>
+      <div class="roster_exp" id="roster_5_exp"></div>
+      <div class="roster_exp_border" id="roster_5_exp_border"></div>
+
+      <div class="roster_move_1_bg" id="roster_move_1_bg_5"></div>
+      <div class="roster_move_1" id="roster_move_1_5"></div>
+      <div class="roster_move_2_bg" id="roster_move_2_bg_5"></div>
+      <div class="roster_move_2" id="roster_move_2_5"></div>
+      <div class="roster_move_3_bg" id="roster_move_3_bg_5"></div>
+      <div class="roster_move_3" id="roster_move_3_5"></div>
+      <div class="roster_move_4_bg" id="roster_move_4_bg_5"></div>
+      <div class="roster_move_4" id="roster_move_4_5"></div>
+    </div>
+
+    <div class="roster_6_">
+      <div class="ball_sprite" id="ball_sprite_6" style="background-image:url('');"></div>
+      <div class="roster_sprite" id="roster_6_sprite" style="background-image:url('');"></div>
+      <div class="held_item_sprite" id="held_item_sprite_6" style="background-image:url('');"></div>
+      <div class="roster_gender" id="roster_gender_6"></div>
+      <div class="roster_shiny" id="roster_shiny_6"></div>
+      <div class="roster_nickname" id="roster_6_nickname"></div>
+      <div class="roster_species" id="roster_6_species"></div>
+      <div class="roster_egg" id="roster_6_egg"></div>
+      <div class="roster_level" id="roster_6_level"></div>
+      <div class="roster_type_1_bg" id="roster_6_type_1_bg"></div>
+      <div class="roster_type_1" id="roster_6_type_1"></div>
+      <div class="roster_type_2_bg" id="roster_6_type_2_bg"></div>
+      <div class="roster_type_2" id="roster_6_type_2"></div>
+      <div class="status_bg" id="status_bg_6"></div>
+      <div class="status_" id="status_6"></div>
+      <div class="roster_hp_numerical" id="roster_6_hp_numerical"></div>
+      <div class="roster_hp" id="roster_6_hp"></div>
+      <div class="roster_hp_border" id="roster_6_border"></div>
+      <div class="roster_exp" id="roster_6_exp"></div>
+      <div class="roster_exp_border" id="roster_6_exp_border"></div>
+
+      <div class="roster_move_1_bg" id="roster_move_1_bg_6"></div>
+      <div class="roster_move_1" id="roster_move_1_6"></div>
+      <div class="roster_move_2_bg" id="roster_move_2_bg_6"></div>
+      <div class="roster_move_2" id="roster_move_2_6"></div>
+      <div class="roster_move_3_bg" id="roster_move_3_bg_6"></div>
+      <div class="roster_move_3" id="roster_move_3_6"></div>
+      <div class="roster_move_4_bg" id="roster_move_4_bg_6"></div>
+      <div class="roster_move_4" id="roster_move_4_6"></div>
+    </div>
+
+  </div>
 
 </body>
 
