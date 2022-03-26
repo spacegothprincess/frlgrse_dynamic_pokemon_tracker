@@ -262,7 +262,7 @@ function update_(){
               document.getElementById("roster_shiny_".concat( poke_data[roster_loop]["slotId"])).innerHTML ="";
             }
             else{
-              document.getElementById("roster_".concat( poke_data[roster_loop]["slotId"], "_sprite")).style.backgroundImage = "url('".concat(pokemon_shiny_sprites_root, pokemon_file_names[poke_data[roster_loop]["pokemon"]["species"]].toLowerCase(), pokemon_file_extensions, "')");
+              document.getElementById("roster_".concat( poke_data[roster_loop]["slotId"], "_sprite")).style.backgroundImage = "url('".concat(pokemon_shiny_sprites_root, pokemon_file_names[poke_data[roster_loop]["pokemon"]["species"]].toLowerCase(), pokemon_sprites_extension, "')");
               document.getElementById("roster_shiny_".concat( poke_data[roster_loop]["slotId"])).innerHTML ="&#11088";
             }
           }
@@ -495,7 +495,7 @@ function update_(){
 
 
 //this bit of code fetches the json file every 100 milliseconds, and uses it to update the team
-setInterval(
+ setInterval(
 
   function get_new_data(){
     fetch("./json_generator/party.json")
@@ -507,6 +507,7 @@ setInterval(
       //console.log(poke_data);
       update_();
     });
-  },
+  }
+  ,
 
-100);
+ 100);
