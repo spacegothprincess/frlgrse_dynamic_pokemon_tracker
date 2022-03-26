@@ -495,7 +495,7 @@ function update_(){
 
 
 //this bit of code fetches the json file every 100 milliseconds, and uses it to update the team
- setInterval(
+setInterval(
 
   function get_new_data(){
     fetch("./json_generator/party.json")
@@ -508,6 +508,7 @@ function update_(){
       update_();
     });
   }
-  ,
+    
+  ,100
 
- 100);
+);
