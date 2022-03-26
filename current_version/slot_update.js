@@ -21,6 +21,32 @@ const pokemon_type_1_lookup = [0, 12, 12, 12, 10, 10, 10, 11, 11, 11, 7, 7, 7, 7
 
 const pokemon_type_2_lookup = [0, 4, 4, 4, 0, 0, 3, 0, 0, 0, 0, 0, 3, 4, 4, 4, 3, 3, 3, 0, 0, 3, 3, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 5, 0, 0, 0, 0, 18, 18, 3, 3, 4, 4, 4, 12, 12, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 5, 5, 5, 0, 0, 14, 14, 9, 9, 3, 3, 3, 0, 15, 0, 0, 0, 15, 4, 4, 4, 5, 0, 0, 0, 0, 0, 0, 14, 14, 0, 0, 0, 0, 0, 0, 0, 6, 6, 0, 0, 0, 0, 0, 0, 0, 0, 14, 18, 3, 14, 0, 0, 0, 0, 0, 3, 15, 0, 0, 0, 0, 0, 0, 11, 11, 11, 11, 3, 0, 3, 3, 3, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3, 4, 4, 3, 13, 13, 0, 0, 18, 0, 3, 3, 3, 0, 0, 0, 0, 18, 18, 0, 0, 3, 3, 3, 0, 0, 0, 3, 5, 5, 0, 0, 3, 14, 0, 0, 0, 14, 0, 9, 0, 3, 5, 0, 0, 4, 9, 6, 2, 15, 0, 0, 0, 6, 5, 5, 6, 0, 0, 3, 3, 3, 10, 10, 16, 0, 0, 0, 0, 0, 0, 0, 14, 0, 0, 0, 0, 0, 0, 0, 5, 5, 17, 3, 3, 12, 0, 0, 0, 0, 2, 2, 0, 5, 5, 0, 0, 0, 0, 0, 0, 3, 0, 4, 12, 12, 12, 0, 17, 17, 3, 3, 3, 3, 18, 18, 18, 11, 3, 0, 2, 0, 0, 0, 5, 3, 8, 0, 0, 0, 0, 0, 18, 0, 0, 0, 8, 18, 6, 6, 6, 14, 14, 0, 0, 0, 0, 0, 0, 4, 0, 0, 17, 17, 0, 0, 5, 5, 0, 0, 0, 0, 0, 16, 16, 0, 17, 3, 3, 0, 0, 14, 14, 5, 5, 0, 17, 14, 14, 12, 12, 7, 7, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 11, 11, 11, 0, 0, 0, 6, 0, 0, 0, 3, 14, 14, 14, 0, 0, 0, 14, 14, 0, 0, 3, 14, 0];
 
+//patch code for those fairy type pokemon which were not so in Gen III
+//pure fairy type were all normal
+pokemon_type_1_lookup[35] = 1;  
+pokemon_type_1_lookup[36] = 1;   
+pokemon_type_1_lookup[173] = 1; 
+pokemon_type_1_lookup[175] = 1; 
+pokemon_type_1_lookup[209] = 1; 
+pokemon_type_1_lookup[210] = 1; 
+
+//dual type fairy type 1 becomes normal type 1
+pokemon_type_1_lookup[176] = 1;
+
+//dual type fairy type 2 never had a second type
+pokemon_type_2_lookup[39] = 0;
+pokemon_type_2_lookup[40] = 0;
+pokemon_type_2_lookup[122] = 0;
+pokemon_type_2_lookup[174] = 0;
+pokemon_type_2_lookup[183] = 0;
+pokemon_type_2_lookup[184] = 0;
+pokemon_type_2_lookup[280] = 0;
+pokemon_type_2_lookup[281] = 0;
+pokemon_type_2_lookup[282] = 0;
+pokemon_type_2_lookup[298] = 0;
+pokemon_type_2_lookup[303] = 0;
+
+
 //these two arrays define a 'gender symbol' and rgb colours. [0] is blank and used to erase the tags for gender neutral pokemon, and then an array of the threshhold values for all pokemon in Gen III
 const pokemon_gender_symbols = ["", "&#9792", "&#9794"];
 const pokemon_gender_colors = ["rgba(0, 0, 0, 0)", "rgba(217, 127, 255, 255)", "rgba(78, 117, 255, 255)"];
@@ -53,11 +79,17 @@ const level_curve_slow = [0, 0, 10, 33, 80, 156, 270, 428, 640, 911, 1250, 1663,
 
 const level_curve_fluctuating = [0, 0, 4, 13, 32, 65, 112, 178, 276, 393, 540, 745, 967, 1230, 1591, 1957, 2457, 3046, 3732, 4526, 5440, 6482, 7666, 9003, 10506, 12187, 14060, 16140, 18439, 20974, 23760, 26811, 30146, 33780, 37731, 42017, 46656, 50653, 55969, 60505, 66560, 71677, 78533, 84277, 91998, 98415, 107069, 114205, 123863, 131766, 142500, 151222, 163105, 172697, 185807, 196322, 210739, 222231, 238036, 250562, 267840, 281456, 300293, 315059, 335544, 351520, 373744, 390991, 415050, 433631, 459620, 479600, 507617, 529063, 559209, 582187, 614566, 639146, 673863, 700115, 737280, 765275, 804997, 834809, 877201, 908905, 954084, 987754, 1035837, 1071552, 1122660, 1160499, 1214753, 1254796, 1312322, 1354652, 1415577, 1460276, 1524731, 1571884, 1640000];
 
+//Move Arrays for move typing/ later on move lookup by index.
+const move_names = ["", "Pound", "Karate Chop", "Double Slap", "Comet Punch", "Mega Punch", "Pay Day", "Fire Punch", "Ice Punch", "Thunder Punch", "Scratch", "Vise Grip", "Guillotine", "Razor Wind", "Swords Dance", "Cut", "Gust", "Wing Attack", "Whirlwind", "Fly", "Bind", "Slam", "Vine Whip", "Stomp", "Double Kick", "Mega Kick", "Jump Kick", "Rolling Kick", "Sand-Attack", "Headbutt", "Horn Attack", "Fury Attack", "Horn Drill", "Tackle", "Body Slam", "Wrap", "Take Down", "Thrash", "Double-Edge", "Tail Whip", "Poison Sting", "Twineedle", "Pin Missile", "Leer", "Bite", "Growl", "Roar", "Sing", "Supersonic", "Sonic Boom", "Disable", "Acid", "Ember", "Flamethrower", "Mist", "Water Gun", "Hydro Pump", "Surf", "Ice Beam", "Blizzard", "Psybeam", "Bubble Beam", "Aurora Beam", "Hyper Beam", "Peck", "Drill Peck", "Submission", "Low Kick", "Counter", "Seismic Toss", "Strength", "Absorb", "Mega Drain", "Leech Seed", "Growth", "Razor Leaf", "Solar Beam", "PoisonPowder", "Stun Spore", "Sleep Powder", "Petal Dance", "String Shot", "Dragon Rage", "Fire Spin", "ThunderShock", "Thunderbolt", "Thunder Wave", "Thunder", "Rock Throw", "Earthquake", "Fissure", "Dig", "Toxic", "Confusion", "Psychic", "Hypnosis", "Meditate", "Agility", "Quick Attack", "Rage", "Teleport", "Night Shade", "Mimic", "Screech", "Double Team", "Recover", "Harden", "Minimize", "Smokescreen", "Confuse Ray", "Withdraw", "Defense Curl", "Barrier", "Light Screen", "Haze", "Reflect", "Focus Energy", "Bide", "Metronome", "Mirror Move", "Self-Destruct", "Egg Bomb", "Lick", "Smog", "Sludge", "Bone Club", "Fire Blast", "Waterfall", "Clamp", "Swift", "Skull Bash", "Spike Cannon", "Constrict", "Amnesia", "Kinesis", "Soft-Boiled", "High Jump Kick", "Glare", "Dream Eater", "Poison Gas", "Barrage", "Leech Life", "Lovely Kiss", "Sky Attack", "Transform", "Bubble", "Dizzy Punch", "Spore", "Flash", "Psywave", "Splash", "Acid Armor", "Crabhammer", "Explosion", "Fury Swipes", "Bonemerang", "Rest", "Rock Slide", "Hyper Fang", "Sharpen", "Conversion", "Tri Attack", "Super Fang", "Slash", "Substitute", "Struggle", "Sketch", "Triple Kick", "Thief", "Spider Web", "Mind Reader", "Nightmare", "Flame Wheel", "Snore", "Curse", "Flail", "Conversion 2", "Aeroblast", "Cotton Spore", "Reversal", "Spite", "Powder Snow", "Protect", "Mach Punch", "Scary Face", "Feint Attack", "Sweet Kiss", "Belly Drum", "Sludge Bomb", "Mud-Slap", "Octazooka", "Spikes", "Zap Cannon", "Foresight", "Destiny Bond", "Perish Song", "Icy Wind", "Detect", "Bone Rush", "Lock-On", "Outrage", "Sandstorm", "Giga Drain", "Endure", "Charm", "Rollout", "False Swipe", "Swagger", "Milk Drink", "Spark", "Fury Cutter", "Steel Wing", "Mean Look", "Attract", "Sleep Talk", "Heal Bell", "Return", "Present", "Frustration", "Safeguard", "Pain Split", "Sacred Fire", "Magnitude", "Dynamic Punch", "Megahorn", "Dragon Breath", "Baton Pass", "Encore", "Pursuit", "Rapid Spin", "Sweet Scent", "Iron Tail", "Metal Claw", "Vital Throw", "Morning Sun", "Synthesis", "Moonlight", "Hidden Power", "Cross Chop", "Twister", "Rain Dance", "Sunny Day", "Crunch", "Mirror Coat", "Psych Up", "Extreme Speed", "Ancient Power", "Shadow Ball", "Future Sight", "Rock Smash", "Whirlpool", "Beat Up", "Fake Out", "Uproar", "Stockpile", "Spit Up", "Swallow", "Heat Wave", "Hail", "Torment", "Flatter", "Will-O-Wisp", "Memento", "Facade", "Focus Punch", "Smelling Salts", "Follow Me", "Nature Power", "Charge", "Taunt", "Helping Hand", "Trick", "Role Play", "Wish", "Assist", "Ingrain", "Superpower", "Magic Coat", "Recycle", "Revenge", "Brick Break", "Yawn", "Knock Off", "Endeavor", "Eruption", "Skill Swap", "Imprison", "Refresh", "Grudge", "Snatch", "Secret Power", "Dive", "Arm Thrust", "Camouflage", "Tail Glow", "Luster Purge", "Mist Ball", "Feather Dance", "Teeter Dance", "Blaze Kick", "Mud Sport", "Ice Ball", "Needle Arm", "Slack Off", "Hyper Voice", "Poison Fang", "Crush Claw", "Blast Burn", "Hydro Cannon", "Meteor Mash", "Astonish", "Weather Ball", "Aromatherapy", "Fake Tears", "Air Cutter", "Overheat", "Odor Sleuth", "Rock Tomb", "Silver Wind", "Metal Sound", "Grass Whistle", "Tickle", "Cosmic Power", "Water Spout", "Signal Beam", "Shadow Punch", "Extrasensory", "Sky Uppercut", "Sand Tomb", "Sheer Cold", "Muddy Water", "Bullet Seed", "Aerial Ace", "Icicle Spear", "Iron Defense", "Block", "Howl", "Dragon Claw", "Frenzy Plant", "Bulk Up", "Bounce", "Mud Shot", "Poison Tail", "Covet", "Volt Tackle", "Magical Leaf", "Water Sport", "Calm Mind", "Leaf Blade", "Dragon Dance", "Rock Blast", "Shock Wave", "Water Pulse", "Doom Desire", "Psycho Boost"]
+
+const move_type_ = [0, 1, 2, 1, 1, 1, 1, 10, 15, 13, 1, 1, 1, 1, 1, 1, 3, 3, 1, 3, 1, 1, 12, 1, 2, 1, 2, 2, 5, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 7, 7, 1, 17, 1, 1, 1, 1, 1, 1, 4, 10, 10, 15, 11, 11, 11, 15, 15, 14, 11, 15, 1, 3, 3, 2, 2, 2, 2, 1, 12, 12, 12, 1, 12, 12, 4, 12, 12, 12, 7, 16, 10, 13, 13, 13, 13, 6, 5, 5, 5, 4, 14, 14, 14, 14, 14, 1, 1, 14, 8, 1, 1, 1, 1, 1, 1, 1, 8, 11, 1, 14, 14, 15, 14, 1, 1, 1, 3, 1, 1, 8, 4, 4, 5, 10, 11, 11, 1, 1, 1, 1, 14, 14, 1, 2, 1, 14, 4, 1, 7, 1, 3, 1, 11, 1, 12, 1, 14, 1, 4, 11, 1, 1, 5, 14, 6, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 17, 7, 1, 8, 10, 1, 8, 1, 1, 3, 12, 2, 8, 15, 1, 2, 1, 17, 18, 1, 4, 5, 11, 5, 13, 1, 8, 1, 15, 2, 5, 1, 16, 6, 12, 1, 18, 6, 1, 1, 1, 13, 7, 9, 1, 1, 1, 1, 1, 1, 1, 1, 1, 10, 5, 2, 7, 16, 1, 1, 17, 1, 1, 9, 9, 2, 1, 12, 18, 1, 2, 16, 11, 10, 17, 14, 1, 1, 6, 8, 14, 2, 11, 17, 1, 1, 1, 1, 1, 10, 15, 17, 17, 10, 17, 1, 2, 1, 1, 1, 13, 17, 1, 14, 14, 1, 1, 12, 2, 14, 1, 2, 2, 1, 17, 1, 10, 14, 14, 1, 8, 17, 1, 11, 2, 1, 7, 14, 14, 3, 1, 10, 5, 15, 12, 1, 1, 4, 1, 10, 11, 9, 8, 1, 12, 17, 3, 10, 1, 6, 7, 9, 12, 1, 14, 11, 7, 8, 14, 2, 5, 15, 11, 12, 3, 15, 9, 1, 1, 16, 12, 2, 3, 5, 4, 1, 13, 12, 11, 14, 12, 16, 6, 13, 11, 9, 14]
+
 
 //start of functions and variables related to the update function
 
 //debug variables
 var update_loop = 0;
+
 
 //slot change ids stores the change update value so the code can compare it and make sure that it's not updating when it doesn't need to
 const slot_change_ids = [-1, -1, -1, -1, -1, -1, -1];
@@ -138,7 +170,7 @@ function update_(){
       }
 
       //this is a special case for if the pokemon is an egg. It clears out most values and types Egg in a special name holder
-      else if (poke_data[roster_loop]["pokemon"]["isEgg"] != 0){
+      else if (poke_data[roster_loop]["pokemon"]["isEgg"] == 1){
         if(sprite_draw == true){document.getElementById("roster_".concat( poke_data[roster_loop]["slotId"], "_sprite")).style.backgroundImage = "url('".concat(pokemon_normal_sprites_root, egg_filename, "')");
         }
 
@@ -211,7 +243,7 @@ function update_(){
             var unown_binary = pid_binary.slice(pid_binary.length-26, pid_binary.length-24) + pid_binary.slice(pid_binary.length-18, pid_binary.length-16) + pid_binary.slice(pid_binary.length-10, pid_binary.length-8) + pid_binary.slice(pid_binary.length-2, pid_binary.length);
             var unown_dec = parseInt(unown_binary, 2);
             var unown_mod = (unown_dec % 28);
-            console.log(unown_mod);
+            //console.log(unown_mod);
 
             if(poke_data[roster_loop]["pokemon"]["isShiny"] == false){
               document.getElementById("roster_".concat( poke_data[roster_loop]["slotId"], "_sprite")).style.backgroundImage = "url('".concat(pokemon_normal_sprites_root, unown_file_names[unown_mod].toLowerCase(), pokemon_sprites_extension, "')");
@@ -419,13 +451,14 @@ function update_(){
 
         if (moves_draw == true){
 
-          console.log(poke_data[roster_loop]["pokemon"]["move4"]["name"])
+          
           var moves_draw_loop = 1;
 
           while (moves_draw_loop<5){
             if(poke_data[roster_loop]["pokemon"]["move".concat(moves_draw_loop)]["name"] !== undefined){
+
               document.getElementById("roster_move_".concat(moves_draw_loop, "_", poke_data[roster_loop]["slotId"])).innerHTML = poke_data[roster_loop]["pokemon"]["move".concat(moves_draw_loop)]["name"];
-              document.getElementById("roster_move_".concat(moves_draw_loop, "_bg_", poke_data[roster_loop]["slotId"])).style.backgroundColor = pokemon_type_colors[1];
+              document.getElementById("roster_move_".concat(moves_draw_loop, "_bg_", poke_data[roster_loop]["slotId"])).style.backgroundColor = pokemon_type_colors[move_type_[move_names.indexOf(poke_data[roster_loop]["pokemon"]["move".concat(moves_draw_loop)]["name"])]];
             }
 
             else{
@@ -437,29 +470,29 @@ function update_(){
 
         }
 
-        //this curly bracket is the ened of the else statement. if its supposed to be in the else statement for the pokemon update, put it *before* this curly boi
+        
+        
+        
+        //this curly bracket is the end of the else statement. if its supposed to be in the else statement for the pokemon update, put it *before* this curly boi
       }
-
-        //this code will be eventually used to solve the pokemon flip glitch
-        //pokemon_pids_minus_2[poke_data[roster_loop]["slotId"]] = pokemon_pids_minus_1[poke_data[roster_loop]["slotId"]];
-        //pokemon_pids_minus_1[poke_data[roster_loop]["slotId"]] = poke_data[roster_loop]["pokemon"]["pid"];
-        //console.log("Pokemon in ".concat(poke_data[roster_loop]["slotId"], ": ", poke_data[roster_loop]["pokemon"]["speciesName"]));
-        //console.log(pokemon_pids_minus_1);
-        //console.log(pokemon_pids_minus_2);
+      
+      //this code will be eventually used to solve the pokemon flip glitch
+      //pokemon_pids_minus_2[poke_data[roster_loop]["slotId"]] = pokemon_pids_minus_1[poke_data[roster_loop]["slotId"]];
+      //pokemon_pids_minus_1[poke_data[roster_loop]["slotId"]] = poke_data[roster_loop]["pokemon"]["pid"];
+      //console.log("Pokemon in ".concat(poke_data[roster_loop]["slotId"], ": ", poke_data[roster_loop]["pokemon"]["speciesName"]));
+      //console.log(pokemon_pids_minus_1);
+      //console.log(pokemon_pids_minus_2);
     }
     //end of function
 
+    //updates the slot id update numbers for future reference
     slot_change_ids[poke_data[roster_loop]["slotId"]] = poke_data[roster_loop]["changeId"];
-
     roster_loop ++;
-
-  }
-
-  update_loop ++;
-  //console.log(update_loop);
-  //console.log(Date("THH:MM:SSZ"));
-
+  } 
+  console.log(update_loop);
+  //update_loop ++;
 }
+
 
 //this bit of code fetches the json file every 100 milliseconds, and uses it to update the team
 setInterval(
