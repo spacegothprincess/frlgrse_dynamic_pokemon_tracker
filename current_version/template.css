@@ -9,7 +9,7 @@ body {
 
 /* The background here is set for preview purposes in a web browser. if you're using this as an OBS overlay, make sure to empty the backround-image property*/
 div.front_end_roster {
-  background-image: url("template_bg-01.png");
+  background-image: url("");
   background-position: left top;
   width: 1920px;
   height: 1080px;
@@ -24,51 +24,51 @@ div.front_end_roster {
 
 /* The six roster slots themselves. They must all be the same size for this version of the code to work.*/
 div.roster_1_ {
-  width: 450px;
+  width: 405px;
   height: 115px;
   position: absolute;
-  top: 50px;
-  left: 50px;
+  top: 75px;
+  left: 35px;
 }
 
 div.roster_2_ {
-  width: 450px;
+  width: 405px;
   height: 115px;
   position: absolute;
-  top: 50px;
-  left: 550px;
+  top: 214px;
+  left: 35px;
 }
 
 div.roster_3_ {
-  width: 450px;
+  width: 405px;
   height: 115px;
   position: absolute;
-  top: 275px;
-  left: 50px;
+  top: 353px;
+  left: 35px;
 }
 
 div.roster_4_ {
-  width: 450px;
+  width: 405px;
   height: 115px;
   position: absolute;
-  top: 275px;
-  left: 550px;
+  top: 492px;
+  left: 35px;
 }
 
 div.roster_5_ {
-  width: 450px;
+  width: 405px;
   height: 115px;
   position: absolute;
-  top: 500px;
-  left: 50px;
+  top: 631px;
+  left: 35px;
 }
 
 div.roster_6_ {
-  width: 450px;
+  width: 405px;
   height: 115px;
   position: absolute;
-  top: 500px;
-  left: 550px;
+  top: 770px;
+  left: 35px;
 }
 
 /* Individual Roster Elements. They're drawn within each roster slot, and their position should be relative to the roster slot, not the whole overlay. */
@@ -90,7 +90,7 @@ div.ball_sprite {
   height: 24px;
   position: absolute;
   top: 1px;
-  left: 425px;
+  left: 374px;
 }
 
 div.roster_gender {
@@ -104,7 +104,7 @@ div.roster_gender {
   height: 18px;
   position: absolute;
   top: 4px;
-  left: 394px;
+  left: 343px;
   border-radius: 10px;
   margin-left: 10px;
 }
@@ -130,7 +130,7 @@ div.roster_shiny {
   height: 24px;
   position: absolute;
   top: 1px;
-  left: 369px;
+  left: 318px;
   border-radius: 10px;
   margin-left: 10px;
 }
@@ -164,7 +164,19 @@ div.roster_egg {
   width: 200px;
   height: 30px;
   position: absolute;
-  top: 29px;
+  top: 5px;
+  left: 135px;
+}
+
+div.roster_egg_description {
+  font-family: 'Mirza', sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  line-height:20px;
+  width: 250px;
+  height: 30px;
+  position: absolute;
+  top: 55px;
   left: 135px;
 }
 
@@ -185,7 +197,7 @@ div.roster_type_1_bg {
   height: 16px;
   position: absolute;
   top: 27px;
-  left: 382px;
+  left: 331px;
   border-radius: 4px;
 }
 
@@ -200,7 +212,7 @@ div.roster_type_1 {
   height: 16px;
   position: absolute;
   top: 22px;
-  left: 382px;
+  left: 331px;
 }
 
 div.roster_type_2_bg {
@@ -209,7 +221,7 @@ div.roster_type_2_bg {
   height: 16px;
   position: absolute;
   top: 46px;
-  left: 382px;
+  left: 331px;
   border-radius: 4px;
 }
 
@@ -224,7 +236,7 @@ div.roster_type_2 {
   height: 16px;
   position: absolute;
   top: 41px;
-  left: 382px;
+  left: 331px;
 
 }
 
@@ -262,7 +274,7 @@ div.roster_hp_numerical {
   height: 30px;
   position: absolute;
   top: 54px;
-  left: 344px;
+  left: 293px;
 }
 
 div.roster_hp {
@@ -284,7 +296,7 @@ div.roster_hp_border {
   left: 122px;
   border-style: solid;
   border-width: 0px;
-  border-color: #ffffff;
+  border-color: #F580B4;
 }
 
 div.roster_exp {
@@ -309,11 +321,11 @@ div.roster_exp_border {
   left: 122px;
   border-style: solid;
   border-width: 0px;
-  border-color: #ffffff;
+  border-color: #F580B4;
 }
 
 div.roster_move_1_bg {
-  background-color: rgba(150, 125, 0, 255);
+  background-color: rgba(0, 0, 0, 0);
   width: 220px;
   height: 22px;
   position: absolute;
@@ -337,7 +349,7 @@ div.roster_move_1 {
 }
 
 div.roster_move_2_bg {
-  background-color: rgba(150, 125, 0, 255);
+  background-color: rgba(0, 0, 0, 0);
   width: 220px;
   height: 22px;
   position: absolute;
@@ -361,7 +373,7 @@ div.roster_move_2 {
 }
 
 div.roster_move_3_bg {
-  background-color: rgba(150, 125, 0, 255);
+  background-color: rgba(0, 0, 0, 0);
   width: 220px;
   height: 22px;
   position: absolute;
@@ -385,7 +397,7 @@ div.roster_move_3 {
 }
 
 div.roster_move_4_bg {
-  background-color: rgba(150, 125, 0, 255);
+  background-color: rgba(0, 0, 0, 0);
   width: 220px;
   height: 22px;
   position: absolute;
@@ -406,4 +418,31 @@ div.roster_move_4 {
   position: absolute;
   top: 146px;
   left: 228px;
+}
+
+/* This code manages the code for the badges */
+
+div.badges_tray {
+  width: 1011px;
+  height: 86px;
+  position: absolute;
+  top: 799px;
+  left: 467px;
+}
+
+
+img.icon_0{
+  opacity: 0.4;
+  width: 50px;
+  margin:0px;
+  border:0px;
+  padding: 0px;
+}
+
+img.icon_1{
+  opacity: 1;
+  width: 50px;
+  margin:0px;
+  border:0px;
+  padding: 0px;
 }
