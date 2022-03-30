@@ -67,17 +67,16 @@ const unown_file_names = ["unown-alpha", "unown-bravo", "unown-charlie", "unown-
 
 const pokemon_level_curve = [0, 3, 3, 3, 3, 3, 3, 3, 3, 3, 2, 2, 2, 2, 2, 2, 3, 3, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 1, 1, 2, 2, 1, 1, 2, 2, 3, 3, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 4, 4, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 4, 4, 3, 3, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 4, 4, 3, 3, 3, 2, 2, 2, 2, 2, 2, 2, 4, 4, 2, 2, 2, 2, 2, 2, 2, 4, 4, 1, 2, 2, 2, 2, 2, 2, 4, 4, 2, 2, 2, 2, 2, 4, 4, 4, 4, 4, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 4, 4, 4, 4, 4, 4, 4, 4, 4, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 2, 2, 2, 2, 1, 1, 1, 1, 2, 4, 4, 2, 1, 1, 1, 1, 2, 2, 3, 3, 3, 3, 1, 1, 2, 3, 3, 3, 3, 1, 3, 3, 2, 2, 2, 2, 2, 3, 2, 1, 2, 2, 2, 2, 2, 2, 3, 2, 1, 1, 2, 2, 3, 4, 3, 2, 2, 2, 2, 4, 4, 1, 2, 2, 1, 4, 4, 4, 4, 2, 2, 2, 2, 4, 1, 2, 2, 2, 2, 2, 4, 1, 4, 4, 4, 4, 4, 4, 4, 4, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 2, 2, 4, 4, 4, 2, 2, 5, 5, 4, 4, 4, 0, 0, 0, 3, 3, 3, 5, 5, 1, 2, 1, 1, 3, 1, 4, 4, 4, 2, 2, 4, 4, 2, 2, 0, 5, 3, 5, 5, 4, 4, 5, 5, 2, 2, 2, 1, 1, 1, 3, 3, 3, 3, 3, 0, 0, 0, 5, 1, 1, 2, 2, 5, 5, 2, 2, 0, 0, 0, 0, 0, 0, 2, 3, 1, 1, 1, 1, 4, 1, 3, 2, 2, 2, 3, 3, 3, 0, 0, 0, 4, 1, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4];
 
-const level_curve_erratic = [0, 0, 15, 52, 122, 237, 406, 637, 942, 1326, 1800, 2369, 3041, 3822, 4719, 5737, 6881, 8155, 9564, 11111, 12800, 14632, 16610, 18737, 21012, 23437, 26012, 28737, 31610, 34632, 37800, 41111, 44564, 48155, 51881, 55737, 59719, 63822, 68041, 72369, 76800, 81326, 85942, 90637, 95406, 100237, 105122, 110052, 115015, 120001, 125000, 131324, 137795, 144410, 151165, 158056, 165079, 172229, 179503, 186894, 194400, 202013, 209728, 217540, 225443, 233431, 241496, 249633, 257834, 267406, 276458, 286328, 296358, 305767, 316074, 326531, 336255, 346965, 357812, 367807, 378880, 390077, 400293, 411686, 423190, 433572, 445239, 457001, 467489, 479378, 491346, 501878, 513934, 526049, 536557, 548720, 560922, 571333, 583539, 591882, 600000];
+// Erratic	0   Fast	1   Medium Fast	2    Medium Slow	3    Slow	4    Fluctuating	5
 
-const level_curve_fast = [0, 0, 6, 21, 51, 100, 172, 274, 409, 583, 800, 1064, 1382, 1757, 2195, 2700, 3276, 3930, 4665, 5487, 6400, 7408, 8518, 9733, 11059, 12500, 14060, 15746, 17561, 19511, 21600, 23832, 26214, 28749, 31443, 34300, 37324, 40522, 43897, 47455, 51200, 55136, 59270, 63605, 68147, 72900, 77868, 83058, 88473, 94119, 100000, 106120, 112486, 119101, 125971, 133100, 140492, 148154, 156089, 164303, 172800, 181584, 190662, 200037, 209715, 219700, 229996, 240610, 251545, 262807, 274400, 286328, 298598, 311213, 324179, 337500, 351180, 365226, 379641, 394431, 409600, 425152, 441094, 457429, 474163, 491300, 508844, 526802, 545177, 563975, 583200, 602856, 622950, 643485, 664467, 685900, 707788, 730138, 752953, 776239, 800000];
+const exp_curve_lut = [[0, 0, 15, 52, 122, 237, 406, 637, 942, 1326, 1800, 2369, 3041, 3822, 4719, 5737, 6881, 8155, 9564, 11111, 12800, 14632, 16610, 18737, 21012, 23437, 26012, 28737, 31610, 34632, 37800, 41111, 44564, 48155, 51881, 55737, 59719, 63822, 68041, 72369, 76800, 81326, 85942, 90637, 95406, 100237, 105122, 110052, 115015, 120001, 125000, 131324, 137795, 144410, 151165, 158056, 165079, 172229, 179503, 186894, 194400, 202013, 209728, 217540, 225443, 233431, 241496, 249633, 257834, 267406, 276458, 286328, 296358, 305767, 316074, 326531, 336255, 346965, 357812, 367807, 378880, 390077, 400293, 411686, 423190, 433572, 445239, 457001, 467489, 479378, 491346, 501878, 513934, 526049, 536557, 548720, 560922, 571333, 583539, 591882, 600000], 
+[0, 0, 6, 21, 51, 100, 172, 274, 409, 583, 800, 1064, 1382, 1757, 2195, 2700, 3276, 3930, 4665, 5487, 6400, 7408, 8518, 9733, 11059, 12500, 14060, 15746, 17561, 19511, 21600, 23832, 26214, 28749, 31443, 34300, 37324, 40522, 43897, 47455, 51200, 55136, 59270, 63605, 68147, 72900, 77868, 83058, 88473, 94119, 100000, 106120, 112486, 119101, 125971, 133100, 140492, 148154, 156089, 164303, 172800, 181584, 190662, 200037, 209715, 219700, 229996, 240610, 251545, 262807, 274400, 286328, 298598, 311213, 324179, 337500, 351180, 365226, 379641, 394431, 409600, 425152, 441094, 457429, 474163, 491300, 508844, 526802, 545177, 563975, 583200, 602856, 622950, 643485, 664467, 685900, 707788, 730138, 752953, 776239, 800000], 
+[0, 0, 8, 27, 64, 125, 216, 343, 512, 729, 1000, 1331, 1728, 2197, 2744, 3375, 4096, 4913, 5832, 6859, 8000, 9261, 10648, 12167, 13824, 15625, 17576, 19683, 21952, 24389, 27000, 29791, 32768, 35937, 39304, 42875, 46656, 50653, 54872, 59319, 64000, 68921, 74088, 79507, 85184, 91125, 97336, 103823, 110592, 117649, 125000, 132651, 140608, 148877, 157464, 166375, 175616, 185193, 195112, 205379, 216000, 226981, 238328, 250047, 262144, 274625, 287496, 300763, 314432, 328509, 343000, 357911, 373248, 389017, 405224, 421875, 438976, 456533, 474552, 493039, 512000, 531441, 551368, 571787, 592704, 614125, 636056, 658503, 681472, 704969, 729000, 753571, 778688, 804357, 830584, 857375, 884736, 912673, 941192, 970299, 1000000], 
+[0, 0, 9, 57, 96, 135, 179, 236, 314, 419, 560, 742, 973, 1261, 1612, 2035, 2535, 3120, 3798, 4575, 5460, 6458, 7577, 8825, 10208, 11735, 13411, 15244, 17242, 19411, 21760, 24294, 27021, 29949, 33084, 36435, 40007, 43808, 47846, 52127, 56660, 61450, 66505, 71833, 77440, 83335, 89523, 96012, 102810, 109923, 117360, 125126, 133229, 141677, 150476, 159635, 169159, 179056, 189334, 199999, 211060, 222522, 234393, 246681, 259392, 272535, 286115, 300140, 314618, 329555, 344960, 360838, 377197, 394045, 411388, 429235, 447591, 466464, 485862, 505791, 526260, 547274, 568841, 590969, 613664, 636935, 660787, 685228, 710266, 735907, 762160, 789030, 816525, 844653, 873420, 902835, 932903, 963632, 995030, 1027103, 1059860], 
+[0, 0, 10, 33, 80, 156, 270, 428, 640, 911, 1250, 1663, 2160, 2746, 3430, 4218, 5120, 6141, 7290, 8573, 10000, 11576, 13310, 15208, 17280, 19531, 21970, 24603, 27440, 30486, 33750, 37238, 40960, 44921, 49130, 53593, 58320, 63316, 68590, 74148, 80000, 86151, 92610, 99383, 106480, 113906, 121670, 129778, 138240, 147061, 156250, 165813, 175760, 186096, 196830, 207968, 219520, 231491, 243890, 256723, 270000, 283726, 297910, 312558, 327680, 343281, 359370, 375953, 393040, 410636, 428750, 447388, 466560, 486271, 506530, 527343, 548720, 570666, 593190, 616298, 640000, 664301, 689210, 714733, 740880, 767656, 795070, 823128, 851840, 881211, 911250, 941963, 973360, 1005446, 1038230, 1071718, 1105920, 1140841, 1176490, 1212873, 1250000], 
+[0, 0, 4, 13, 32, 65, 112, 178, 276, 393, 540, 745, 967, 1230, 1591, 1957, 2457, 3046, 3732, 4526, 5440, 6482, 7666, 9003, 10506, 12187, 14060, 16140, 18439, 20974, 23760, 26811, 30146, 33780, 37731, 42017, 46656, 50653, 55969, 60505, 66560, 71677, 78533, 84277, 91998, 98415, 107069, 114205, 123863, 131766, 142500, 151222, 163105, 172697, 185807, 196322, 210739, 222231, 238036, 250562, 267840, 281456, 300293, 315059, 335544, 351520, 373744, 390991, 415050, 433631, 459620, 479600, 507617, 529063, 559209, 582187, 614566, 639146, 673863, 700115, 737280, 765275, 804997, 834809, 877201, 908905, 954084, 987754, 1035837, 1071552, 1122660, 1160499, 1214753, 1254796, 1312322, 1354652, 1415577, 1460276, 1524731, 1571884, 1640000]
+]
 
-const level_curve_medium_fast = [0, 0, 8, 27, 64, 125, 216, 343, 512, 729, 1000, 1331, 1728, 2197, 2744, 3375, 4096, 4913, 5832, 6859, 8000, 9261, 10648, 12167, 13824, 15625, 17576, 19683, 21952, 24389, 27000, 29791, 32768, 35937, 39304, 42875, 46656, 50653, 54872, 59319, 64000, 68921, 74088, 79507, 85184, 91125, 97336, 103823, 110592, 117649, 125000, 132651, 140608, 148877, 157464, 166375, 175616, 185193, 195112, 205379, 216000, 226981, 238328, 250047, 262144, 274625, 287496, 300763, 314432, 328509, 343000, 357911, 373248, 389017, 405224, 421875, 438976, 456533, 474552, 493039, 512000, 531441, 551368, 571787, 592704, 614125, 636056, 658503, 681472, 704969, 729000, 753571, 778688, 804357, 830584, 857375, 884736, 912673, 941192, 970299, 1000000];
-
-const level_curve_medium_slow = [0, 0, 9, 57, 96, 135, 179, 236, 314, 419, 560, 742, 973, 1261, 1612, 2035, 2535, 3120, 3798, 4575, 5460, 6458, 7577, 8825, 10208, 11735, 13411, 15244, 17242, 19411, 21760, 24294, 27021, 29949, 33084, 36435, 40007, 43808, 47846, 52127, 56660, 61450, 66505, 71833, 77440, 83335, 89523, 96012, 102810, 109923, 117360, 125126, 133229, 141677, 150476, 159635, 169159, 179056, 189334, 199999, 211060, 222522, 234393, 246681, 259392, 272535, 286115, 300140, 314618, 329555, 344960, 360838, 377197, 394045, 411388, 429235, 447591, 466464, 485862, 505791, 526260, 547274, 568841, 590969, 613664, 636935, 660787, 685228, 710266, 735907, 762160, 789030, 816525, 844653, 873420, 902835, 932903, 963632, 995030, 1027103, 1059860];
-
-const level_curve_slow = [0, 0, 10, 33, 80, 156, 270, 428, 640, 911, 1250, 1663, 2160, 2746, 3430, 4218, 5120, 6141, 7290, 8573, 10000, 11576, 13310, 15208, 17280, 19531, 21970, 24603, 27440, 30486, 33750, 37238, 40960, 44921, 49130, 53593, 58320, 63316, 68590, 74148, 80000, 86151, 92610, 99383, 106480, 113906, 121670, 129778, 138240, 147061, 156250, 165813, 175760, 186096, 196830, 207968, 219520, 231491, 243890, 256723, 270000, 283726, 297910, 312558, 327680, 343281, 359370, 375953, 393040, 410636, 428750, 447388, 466560, 486271, 506530, 527343, 548720, 570666, 593190, 616298, 640000, 664301, 689210, 714733, 740880, 767656, 795070, 823128, 851840, 881211, 911250, 941963, 973360, 1005446, 1038230, 1071718, 1105920, 1140841, 1176490, 1212873, 1250000];
-
-const level_curve_fluctuating = [0, 0, 4, 13, 32, 65, 112, 178, 276, 393, 540, 745, 967, 1230, 1591, 1957, 2457, 3046, 3732, 4526, 5440, 6482, 7666, 9003, 10506, 12187, 14060, 16140, 18439, 20974, 23760, 26811, 30146, 33780, 37731, 42017, 46656, 50653, 55969, 60505, 66560, 71677, 78533, 84277, 91998, 98415, 107069, 114205, 123863, 131766, 142500, 151222, 163105, 172697, 185807, 196322, 210739, 222231, 238036, 250562, 267840, 281456, 300293, 315059, 335544, 351520, 373744, 390991, 415050, 433631, 459620, 479600, 507617, 529063, 559209, 582187, 614566, 639146, 673863, 700115, 737280, 765275, 804997, 834809, 877201, 908905, 954084, 987754, 1035837, 1071552, 1122660, 1160499, 1214753, 1254796, 1312322, 1354652, 1415577, 1460276, 1524731, 1571884, 1640000];
 
 //Move Arrays for move typing/ later on move lookup by index.
 const move_names = ["", "Pound", "Karate Chop", "Double Slap", "Comet Punch", "Mega Punch", "Pay Day", "Fire Punch", "Ice Punch", "Thunder Punch", "Scratch", "Vise Grip", "Guillotine", "Razor Wind", "Swords Dance", "Cut", "Gust", "Wing Attack", "Whirlwind", "Fly", "Bind", "Slam", "Vine Whip", "Stomp", "Double Kick", "Mega Kick", "Jump Kick", "Rolling Kick", "Sand-Attack", "Headbutt", "Horn Attack", "Fury Attack", "Horn Drill", "Tackle", "Body Slam", "Wrap", "Take Down", "Thrash", "Double-Edge", "Tail Whip", "Poison Sting", "Twineedle", "Pin Missile", "Leer", "Bite", "Growl", "Roar", "Sing", "Supersonic", "Sonic Boom", "Disable", "Acid", "Ember", "Flamethrower", "Mist", "Water Gun", "Hydro Pump", "Surf", "Ice Beam", "Blizzard", "Psybeam", "Bubble Beam", "Aurora Beam", "Hyper Beam", "Peck", "Drill Peck", "Submission", "Low Kick", "Counter", "Seismic Toss", "Strength", "Absorb", "Mega Drain", "Leech Seed", "Growth", "Razor Leaf", "Solar Beam", "PoisonPowder", "Stun Spore", "Sleep Powder", "Petal Dance", "String Shot", "Dragon Rage", "Fire Spin", "ThunderShock", "Thunderbolt", "Thunder Wave", "Thunder", "Rock Throw", "Earthquake", "Fissure", "Dig", "Toxic", "Confusion", "Psychic", "Hypnosis", "Meditate", "Agility", "Quick Attack", "Rage", "Teleport", "Night Shade", "Mimic", "Screech", "Double Team", "Recover", "Harden", "Minimize", "Smokescreen", "Confuse Ray", "Withdraw", "Defense Curl", "Barrier", "Light Screen", "Haze", "Reflect", "Focus Energy", "Bide", "Metronome", "Mirror Move", "Self-Destruct", "Egg Bomb", "Lick", "Smog", "Sludge", "Bone Club", "Fire Blast", "Waterfall", "Clamp", "Swift", "Skull Bash", "Spike Cannon", "Constrict", "Amnesia", "Kinesis", "Soft-Boiled", "High Jump Kick", "Glare", "Dream Eater", "Poison Gas", "Barrage", "Leech Life", "Lovely Kiss", "Sky Attack", "Transform", "Bubble", "Dizzy Punch", "Spore", "Flash", "Psywave", "Splash", "Acid Armor", "Crabhammer", "Explosion", "Fury Swipes", "Bonemerang", "Rest", "Rock Slide", "Hyper Fang", "Sharpen", "Conversion", "Tri Attack", "Super Fang", "Slash", "Substitute", "Struggle", "Sketch", "Triple Kick", "Thief", "Spider Web", "Mind Reader", "Nightmare", "Flame Wheel", "Snore", "Curse", "Flail", "Conversion 2", "Aeroblast", "Cotton Spore", "Reversal", "Spite", "Powder Snow", "Protect", "Mach Punch", "Scary Face", "Feint Attack", "Sweet Kiss", "Belly Drum", "Sludge Bomb", "Mud-Slap", "Octazooka", "Spikes", "Zap Cannon", "Foresight", "Destiny Bond", "Perish Song", "Icy Wind", "Detect", "Bone Rush", "Lock-On", "Outrage", "Sandstorm", "Giga Drain", "Endure", "Charm", "Rollout", "False Swipe", "Swagger", "Milk Drink", "Spark", "Fury Cutter", "Steel Wing", "Mean Look", "Attract", "Sleep Talk", "Heal Bell", "Return", "Present", "Frustration", "Safeguard", "Pain Split", "Sacred Fire", "Magnitude", "Dynamic Punch", "Megahorn", "Dragon Breath", "Baton Pass", "Encore", "Pursuit", "Rapid Spin", "Sweet Scent", "Iron Tail", "Metal Claw", "Vital Throw", "Morning Sun", "Synthesis", "Moonlight", "Hidden Power", "Cross Chop", "Twister", "Rain Dance", "Sunny Day", "Crunch", "Mirror Coat", "Psych Up", "Extreme Speed", "Ancient Power", "Shadow Ball", "Future Sight", "Rock Smash", "Whirlpool", "Beat Up", "Fake Out", "Uproar", "Stockpile", "Spit Up", "Swallow", "Heat Wave", "Hail", "Torment", "Flatter", "Will-O-Wisp", "Memento", "Facade", "Focus Punch", "Smelling Salts", "Follow Me", "Nature Power", "Charge", "Taunt", "Helping Hand", "Trick", "Role Play", "Wish", "Assist", "Ingrain", "Superpower", "Magic Coat", "Recycle", "Revenge", "Brick Break", "Yawn", "Knock Off", "Endeavor", "Eruption", "Skill Swap", "Imprison", "Refresh", "Grudge", "Snatch", "Secret Power", "Dive", "Arm Thrust", "Camouflage", "Tail Glow", "Luster Purge", "Mist Ball", "Feather Dance", "Teeter Dance", "Blaze Kick", "Mud Sport", "Ice Ball", "Needle Arm", "Slack Off", "Hyper Voice", "Poison Fang", "Crush Claw", "Blast Burn", "Hydro Cannon", "Meteor Mash", "Astonish", "Weather Ball", "Aromatherapy", "Fake Tears", "Air Cutter", "Overheat", "Odor Sleuth", "Rock Tomb", "Silver Wind", "Metal Sound", "Grass Whistle", "Tickle", "Cosmic Power", "Water Spout", "Signal Beam", "Shadow Punch", "Extrasensory", "Sky Uppercut", "Sand Tomb", "Sheer Cold", "Muddy Water", "Bullet Seed", "Aerial Ace", "Icicle Spear", "Iron Defense", "Block", "Howl", "Dragon Claw", "Frenzy Plant", "Bulk Up", "Bounce", "Mud Shot", "Poison Tail", "Covet", "Volt Tackle", "Magical Leaf", "Water Sport", "Calm Mind", "Leaf Blade", "Dragon Dance", "Rock Blast", "Shock Wave", "Water Pulse", "Doom Desire", "Psycho Boost"]
@@ -98,6 +97,44 @@ const slot_change_ids = [-1, -1, -1, -1, -1, -1, -1];
 const pokemon_pids_minus_1 = [-1, -1, -1, -1, -1, -1, -1];
 const pokemon_pids_minus_2 = [-1, -1, -1, -1, -1, -1, -1];
 
+//declared output variables to cycle with
+var sprite_draw_output = "";
+var image_draw_head = "url('";
+var image_draw_tail = "')";
+
+var pokeball_draw_output = "";
+var held_item_draw_output = "";
+
+var nickname_draw_output = "";
+
+var species_name_draw_output = "";
+var egg_name_draw_output = "";
+var egg_status_draw_output = "";
+
+var hp_numeric_draw_output = ""
+var shiny_star_draw_output = "";
+var level_draw_output = "";
+
+var gender_draw_output;
+
+var type_1_draw_output;
+var type_2_draw_output;
+
+var status_draw_output;
+
+//experience draw related variables
+const exp_border_width = [0, 2];
+const exp_bg_color = ['rgba(0,0,0,0)', 'rgba(75, 210, 244,255)']
+
+var exp_draw_output;
+var exp_width
+
+//var status_draw_output = "";
+
+//var experience_draw = true;
+//var moves_draw = false;
+//var types_draw_output = true;
+
 //this function actually looks every 1/10 a second to see if any changes are in the json file, and updates them as it goes
 function update_(){
 
@@ -115,36 +152,22 @@ function update_(){
     
       //if the data updates to 'null', then this blanks out the slot
       if (poke_data[roster_loop]["pokemon"] == null){
-        if(sprite_draw == true){document.getElementById("roster_".concat( poke_data[roster_loop]["slotId"], "_sprite")).style.backgroundImage = "url('')";}
 
-        if(pokeball_draw == true){document.getElementById("ball_sprite_".concat( poke_data[roster_loop]["slotId"])).style.backgroundImage = "url('')";}
+        sprite_draw_output = image_draw_head + image_draw_tail;
+        pokeball_draw_output = image_draw_head + image_draw_tail;
+        held_item_draw_output = image_draw_head + image_draw_tail;
+        shiny_star_draw_output ="";
+        nickname_draw_output = "";
+        species_name_draw_output = "";        
+        egg_name_draw_output = "";
+        egg_status_draw_output = "";
+        level_draw_output = "";
+        hp_numeric_draw_output = "";
+        type_1_draw_output = type_2_draw_output = 0;
+        status_draw_output = 0;
 
-        if(held_item_draw == true){document.getElementById("held_item_sprite_".concat( poke_data[roster_loop]["slotId"])).style.backgroundImage = "url('')";}
-
-        if(nickname_draw == true){document.getElementById("roster_".concat( poke_data[roster_loop]["slotId"], "_nickname")).innerHTML = "";}
-        if(species_name_draw == true){document.getElementById("roster_".concat( poke_data[roster_loop]["slotId"], "_species")).innerHTML = "";}
-        if(species_name_draw == true){document.getElementById("roster_".concat( poke_data[roster_loop]["slotId"], "_egg")).innerHTML = "";}
-        if(level_draw == true){document.getElementById("roster_".concat( poke_data[roster_loop]["slotId"], "_level")).innerHTML = "";}
-        if(hp_numeric_draw == true){document.getElementById("roster_".concat( poke_data[roster_loop]["slotId"], "_hp_numerical")).innerHTML = "";}
-
-        if(types_draw){
-          document.getElementById("roster_".concat(poke_data[roster_loop]["slotId"], "_type_1_bg")).style.backgroundColor = pokemon_type_colors[0];
-          document.getElementById("roster_".concat(poke_data[roster_loop]["slotId"], "_type_1")).innerHTML = pokemon_type_names[0];
-          document.getElementById("roster_".concat(poke_data[roster_loop]["slotId"], "_type_2_bg")).style.backgroundColor = pokemon_type_colors[0];
-          document.getElementById("roster_".concat(poke_data[roster_loop]["slotId"], "_type_2")).innerHTML = pokemon_type_names[0];
-        }
-
-        if(status_draw == true){
-          document.getElementById("status_bg_".concat(poke_data[roster_loop]["slotId"])).style.backgroundColor = pokemon_status_colors[0];
-          document.getElementById("status_".concat(poke_data[roster_loop]["slotId"])).innerHTML = pokemon_status_names[0];
-        }
-
-        if(experience_draw==true){
-          document.getElementById("roster_".concat( poke_data[roster_loop]["slotId"], "_exp_border")).style.borderWidth = 0;
-
-          document.getElementById("roster_".concat( poke_data[roster_loop]["slotId"], "_exp")).style.width = 0;
-          document.getElementById("roster_".concat( poke_data[roster_loop]["slotId"], "_exp")).style.backgroundColor = 'rgba(0,0,0,0)';
-        }
+        exp_draw_output = 0;
+        exp_width = 0;
 
         if(hp_draw == true){
           document.getElementById("roster_".concat( poke_data[roster_loop]["slotId"], "_border")).style.borderWidth = 0;
@@ -152,10 +175,7 @@ function update_(){
           document.getElementById("roster_".concat( poke_data[roster_loop]["slotId"], "_hp")).style.backgroundColor = 'rgba(0,0,0,0)';
         }
 
-        if(gender_draw == true){
-          document.getElementById("roster_gender_".concat(poke_data[roster_loop]["slotId"])).style.backgroundColor = pokemon_gender_colors[0];
-          document.getElementById("roster_gender_".concat(poke_data[roster_loop]["slotId"])).innerHTML = pokemon_gender_symbols[0];
-        }
+        gender_draw_output = 0;
 
         if (moves_draw == true){
           var moves_draw_loop = 1;
@@ -170,38 +190,40 @@ function update_(){
       }
 
       //this is a special case for if the pokemon is an egg. It clears out most values and types Egg in a special name holder
-      else if (poke_data[roster_loop]["pokemon"]["isEgg"] == 1){
-        if(sprite_draw == true){document.getElementById("roster_".concat( poke_data[roster_loop]["slotId"], "_sprite")).style.backgroundImage = "url('".concat(pokemon_normal_sprites_root, egg_filename, "')");
-        }
+      else if (poke_data[roster_loop]["pokemon"]["isEgg"] == 1 && poke_data[roster_loop]["pokemon"]["speciesName"] != "none"){
 
-        if(pokeball_draw == true){document.getElementById("ball_sprite_".concat( poke_data[roster_loop]["slotId"])).style.backgroundImage = "url('')";}
+        sprite_draw_output = image_draw_head + pokemon_normal_sprites_root + egg_filename + image_draw_tail;
+        egg_name_draw_output = "Egg";
 
-        if(held_item_draw == true){document.getElementById("held_item_sprite_".concat( poke_data[roster_loop]["slotId"])).style.backgroundImage = "url('')";}
+        //ranges are 5 or fewer, 6-10, 11-40, 41+ 
 
-        if(nickname_draw == true){document.getElementById("roster_".concat( poke_data[roster_loop]["slotId"], "_nickname")).innerHTML = "";}
-        if(species_name_draw == true){document.getElementById("roster_".concat( poke_data[roster_loop]["slotId"], "_species")).innerHTML = "";}
-        if(species_name_draw == true){document.getElementById("roster_".concat( poke_data[roster_loop]["slotId"], "_egg")).innerHTML = "Egg";}
-        if(level_draw == true){document.getElementById("roster_".concat( poke_data[roster_loop]["slotId"], "_level")).innerHTML = "";}
-        if(hp_numeric_draw == true){document.getElementById("roster_".concat( poke_data[roster_loop]["slotId"], "_hp_numerical")).innerHTML = "";}
+        if(poke_data[roster_loop]["pokemon"]["friendship"] > 41){egg_status_draw_output = "It looks like this Egg will take a long time to hatch.";}
 
-        if(types_draw){
-          document.getElementById("roster_".concat(poke_data[roster_loop]["slotId"], "_type_1_bg")).style.backgroundColor = pokemon_type_colors[0];
-          document.getElementById("roster_".concat(poke_data[roster_loop]["slotId"], "_type_1")).innerHTML = pokemon_type_names[0];
-          document.getElementById("roster_".concat(poke_data[roster_loop]["slotId"], "_type_2_bg")).style.backgroundColor = pokemon_type_colors[0];
-          document.getElementById("roster_".concat(poke_data[roster_loop]["slotId"], "_type_2")).innerHTML = pokemon_type_names[0];
-        }
+        if(poke_data[roster_loop]["pokemon"]["friendship"] <= 40){egg_status_draw_output = "What will hatch from this? It will take some time.";}
 
-        if(status_draw == true){
-          document.getElementById("status_bg_".concat(poke_data[roster_loop]["slotId"])).style.backgroundColor = pokemon_status_colors[0];
-          document.getElementById("status_".concat(poke_data[roster_loop]["slotId"])).innerHTML = pokemon_status_names[0];
-        }
+        if(poke_data[roster_loop]["pokemon"]["friendship"] <= 10){egg_status_draw_output = "It moves occasionally. It should hatch soon.";}
 
-        if(experience_draw==true){
-          document.getElementById("roster_".concat( poke_data[roster_loop]["slotId"], "_exp_border")).style.borderWidth = 0;
+        if(poke_data[roster_loop]["pokemon"]["friendship"] <= 5){egg_status_draw_output = "It's making sounds! It's about to hatch!";}
 
-          document.getElementById("roster_".concat( poke_data[roster_loop]["slotId"], "_exp")).style.width = 0;
-          document.getElementById("roster_".concat( poke_data[roster_loop]["slotId"], "_exp")).style.backgroundColor = 'rgba(0,0,0,0)';
-        }
+        //all the rest of this blanks out the egg code
+        
+        pokeball_draw_output = image_draw_head + image_draw_tail;
+
+        held_item_draw_output = image_draw_head + image_draw_tail;
+        shiny_star_draw_output ="";
+
+        nickname_draw_output = "";
+        species_name_draw_output = "";
+        
+        level_draw_output = "";
+        hp_numeric_draw_output = "";
+
+        type_1_draw_output = type_2_draw_output = 0;
+
+        status_draw_output = 0;
+
+        exp_draw_output = 0;
+        exp_width = 0;
 
         if(hp_draw == true){
           document.getElementById("roster_".concat( poke_data[roster_loop]["slotId"], "_border")).style.borderWidth = 0;
@@ -209,10 +231,7 @@ function update_(){
           document.getElementById("roster_".concat( poke_data[roster_loop]["slotId"], "_hp")).style.backgroundColor = 'rgba(0,0,0,0)';
         }
 
-        if(gender_draw == true){
-          document.getElementById("roster_gender_".concat(poke_data[roster_loop]["slotId"])).style.backgroundColor = pokemon_gender_colors[0];
-          document.getElementById("roster_gender_".concat(poke_data[roster_loop]["slotId"])).innerHTML = pokemon_gender_symbols[0];
-        }
+        gender_draw_output = 0;
 
 
         if (moves_draw == true){
@@ -224,120 +243,88 @@ function update_(){
             moves_draw_loop ++;
           }
         }
+      
 
 
       }
 
       //this updates actual pokemon if neither null nor egg. Updates all elements set to true in the configuration.js file.
+
       else{
         //zero's out the egg just for good measure
-        if (species_name_draw == true){document.getElementById("roster_".concat( poke_data[roster_loop]["slotId"], "_egg")).innerHTML = "";}
+        egg_name_draw_output = "";
 
-        //draws the sprite of the current pokemon
-        if (sprite_draw == true){
+        egg_status_draw_output = "";
 
-          //if the pokemon is unown, calculates the letter and draws the correct unown sprite
-          if(poke_data[roster_loop]["pokemon"]["species"] == 201){
+        //generates the output for the pokemon's sprite
+        var sprite_draw_pokemon_name = "";
+        var sprite_draw_shiny_not_shiny = "";
 
-            var pid_binary = poke_data[roster_loop]["pokemon"]["pid"].toString(2);
-            var unown_binary = pid_binary.slice(pid_binary.length-26, pid_binary.length-24) + pid_binary.slice(pid_binary.length-18, pid_binary.length-16) + pid_binary.slice(pid_binary.length-10, pid_binary.length-8) + pid_binary.slice(pid_binary.length-2, pid_binary.length);
-            var unown_dec = parseInt(unown_binary, 2);
-            var unown_mod = (unown_dec % 28);
-            //console.log(unown_mod);
+        //if the pokemon is unown, calculates the letter and draws the correct unown sprite
+        if(poke_data[roster_loop]["pokemon"]["species"] == 201){
 
-            if(poke_data[roster_loop]["pokemon"]["isShiny"] == false){
-              document.getElementById("roster_".concat( poke_data[roster_loop]["slotId"], "_sprite")).style.backgroundImage = "url('".concat(pokemon_normal_sprites_root, unown_file_names[unown_mod].toLowerCase(), pokemon_sprites_extension, "')");
-              document.getElementById("roster_shiny_".concat( poke_data[roster_loop]["slotId"])).innerHTML ="";
-            }
-            else{
-              document.getElementById("roster_".concat( poke_data[roster_loop]["slotId"], "_sprite")).style.backgroundImage = "url('".concat(pokemon_shiny_sprites_root, unown_file_names[unown_mod].toLowerCase(), pokemon_sprites_extension, "')");
-              document.getElementById("roster_shiny_".concat( poke_data[roster_loop]["slotId"])).innerHTML ="&#11088";
-            }
-          }
+          var pid_binary = poke_data[roster_loop]["pokemon"]["pid"].toString(2);
+          var unown_binary = pid_binary.slice(pid_binary.length-26, pid_binary.length-24) + pid_binary.slice(pid_binary.length-18, pid_binary.length-16) + pid_binary.slice(pid_binary.length-10, pid_binary.length-8) + pid_binary.slice(pid_binary.length-2, pid_binary.length);
+          var unown_dec = parseInt(unown_binary, 2);
+          var unown_mod = (unown_dec % 28);
+          //console.log(unown_mod);
 
-          else{
-              //checks if pokemon is normal or shiny, and if shiny loads the shiny sprite.
-            if(poke_data[roster_loop]["pokemon"]["isShiny"] == false){
-              document.getElementById("roster_".concat( poke_data[roster_loop]["slotId"], "_sprite")).style.backgroundImage = "url('".concat(pokemon_normal_sprites_root, pokemon_file_names[poke_data[roster_loop]["pokemon"]["species"]].toLowerCase(), pokemon_sprites_extension, "')");
-              document.getElementById("roster_shiny_".concat( poke_data[roster_loop]["slotId"])).innerHTML ="";
-            }
-            else{
-              document.getElementById("roster_".concat( poke_data[roster_loop]["slotId"], "_sprite")).style.backgroundImage = "url('".concat(pokemon_shiny_sprites_root, pokemon_file_names[poke_data[roster_loop]["pokemon"]["species"]].toLowerCase(), pokemon_sprites_extension, "')");
-              document.getElementById("roster_shiny_".concat( poke_data[roster_loop]["slotId"])).innerHTML ="&#11088";
-            }
-          }
-
+          sprite_draw_pokemon_name = unown_file_names[unown_mod].toLowerCase();
         }
+
+        else{
+          sprite_draw_pokemon_name = pokemon_file_names[poke_data[roster_loop]["pokemon"]["species"]].toLowerCase();
+        }
+
+        if(poke_data[roster_loop]["pokemon"]["isShiny"] == false){sprite_draw_shiny_not_shiny = pokemon_normal_sprites_root;}
+        else{sprite_draw_shiny_not_shiny = pokemon_shiny_sprites_root;}
+
+        sprite_draw_output = image_draw_head + sprite_draw_shiny_not_shiny + sprite_draw_pokemon_name + pokemon_sprites_extension + image_draw_tail;
+
+        
+
+        //generates the output for the pokemon's shiny_star
+        if(poke_data[roster_loop]["pokemon"]["isShiny"] == false){shiny_star_draw_output =""}
+        else{shiny_star_draw_output ="&#11088"}
 
         //This code loads the pokeball the pokemon was caught in
-        if (pokeball_draw == true){
-          document.getElementById("ball_sprite_".concat( poke_data[roster_loop]["slotId"])).style.backgroundImage = "url('".concat(item_images_root, gen_3_items[poke_data[roster_loop]["pokemon"]["pokeball"]].toLowerCase(), item_extension, "')");
-        }
+        pokeball_draw_output =  image_draw_head + item_images_root + gen_3_items[poke_data[roster_loop]["pokemon"]["pokeball"]].toLowerCase() + item_extension + image_draw_tail;
+          
+        
 
-        if (held_item_draw == true){
-          document.getElementById("held_item_sprite_".concat( poke_data[roster_loop]["slotId"])).style.backgroundImage = "url('".concat(item_images_root, gen_3_items[poke_data[roster_loop]["pokemon"]["heldItem"]].toLowerCase(), item_extension, "')");
-        }
+        held_item_draw_output = image_draw_head + item_images_root + gen_3_items[poke_data[roster_loop]["pokemon"]["heldItem"]].toLowerCase() + item_extension + image_draw_tail;
 
         //Calculates the gender of the pokemon from the PID
-        if (gender_draw == true){
-          var pid_binary = poke_data[roster_loop]["pokemon"]["pid"].toString(2);
-          var gender_binary = pid_binary.slice(pid_binary.length-8, pid_binary.length);
-          var gender_bit_dec_10 = parseInt(gender_binary, 2);
+        
+        var pid_binary = poke_data[roster_loop]["pokemon"]["pid"].toString(2);
+        var gender_binary = pid_binary.slice(pid_binary.length-8, pid_binary.length);
+        var gender_bit_dec_10 = parseInt(gender_binary, 2);
 
-          if (gender_threshold_values[poke_data[roster_loop]["pokemon"]["species"]] == 0){
-            document.getElementById("roster_gender_".concat(poke_data[roster_loop]["slotId"])).style.backgroundColor = pokemon_gender_colors[2];
-            document.getElementById("roster_gender_".concat(poke_data[roster_loop]["slotId"])).innerHTML = pokemon_gender_symbols[2];
-          } //always Male
+        if (gender_threshold_values[poke_data[roster_loop]["pokemon"]["species"]] == 0){gender_draw_output = 2;} //always Male
+        else if (gender_threshold_values[poke_data[roster_loop]["pokemon"]["species"]] == 254){gender_draw_output = 1;} //always Female
+        else if (gender_threshold_values[poke_data[roster_loop]["pokemon"]["species"]] == 255){gender_draw_output = 0;} //gender neutral
 
-          else if (gender_threshold_values[poke_data[roster_loop]["pokemon"]["species"]] == 254){
-            document.getElementById("roster_gender_".concat(poke_data[roster_loop]["slotId"])).style.backgroundColor = pokemon_gender_colors[1];
-            document.getElementById("roster_gender_".concat(poke_data[roster_loop]["slotId"])).innerHTML = pokemon_gender_symbols[1];
-          } //always Female
-
-          else if (gender_threshold_values[poke_data[roster_loop]["pokemon"]["species"]] == 255){
-            document.getElementById("roster_gender_".concat(poke_data[roster_loop]["slotId"])).style.backgroundColor = pokemon_gender_colors[0];
-            document.getElementById("roster_gender_".concat(poke_data[roster_loop]["slotId"])).innerHTML = pokemon_gender_symbols[0];
-          } //gender neutral
-
-          else{
-
-            if (gender_bit_dec_10 < gender_threshold_values[poke_data[roster_loop]["pokemon"]["species"]]){
-              document.getElementById("roster_gender_".concat(poke_data[roster_loop]["slotId"])).style.backgroundColor = pokemon_gender_colors[1];
-              document.getElementById("roster_gender_".concat(poke_data[roster_loop]["slotId"])).innerHTML = pokemon_gender_symbols[1];
-            }
-
-            else {
-              document.getElementById("roster_gender_".concat(poke_data[roster_loop]["slotId"])).style.backgroundColor = pokemon_gender_colors[2];
-              document.getElementById("roster_gender_".concat(poke_data[roster_loop]["slotId"])).innerHTML = pokemon_gender_symbols[2];
-            }
-
-          }
-
+        else{
+          if (gender_bit_dec_10 < gender_threshold_values[poke_data[roster_loop]["pokemon"]["species"]]){gender_draw_output = 1;}
+          else {gender_draw_output = 2;}
         }
 
         //reads the pokemon's nickname, turns it into a standard format of only first letter capital, and then prints that to the nickname field.
-        if (nickname_draw == true){
-          var nickname_std = poke_data[roster_loop]["pokemon"]["nickname"].charAt(0).toUpperCase() + poke_data[roster_loop]["pokemon"]["nickname"].slice(1).toLowerCase();
-          document.getElementById("roster_".concat( poke_data[roster_loop]["slotId"], "_nickname")).innerHTML = nickname_std;
-        }
+        
+        var nickname_std = poke_data[roster_loop]["pokemon"]["nickname"].charAt(0).toUpperCase() + poke_data[roster_loop]["pokemon"]["nickname"].slice(1).toLowerCase();
+        nickname_draw_output = nickname_std;
 
         //prints the pokemon's species name into the species field
-        if (species_name_draw == true) {
-          document.getElementById("roster_".concat( poke_data[roster_loop]["slotId"], "_species")).innerHTML = poke_data[roster_loop]["pokemon"]["speciesName"];
-        }
-
+        
+        species_name_draw_output = poke_data[roster_loop]["pokemon"]["speciesName"];
+        
         //prints the pokemon's level into the Level field.
-        if (level_draw == true){
-          document.getElementById("roster_".concat( poke_data[roster_loop]["slotId"], "_level")).innerHTML = "Lv. ".concat(poke_data[roster_loop]["pokemon"]["level"]);
-        }
+        
+        level_draw_output = "Lv. ".concat(poke_data[roster_loop]["pokemon"]["level"]);
 
         //this looks up the two types the pokemon may have, and then prints them into the type fields, while also changing the background colors of the types.
-        if (types_draw == true){
-          document.getElementById("roster_".concat(poke_data[roster_loop]["slotId"], "_type_1_bg")).style.backgroundColor = pokemon_type_colors[pokemon_type_1_lookup[poke_data[roster_loop]["pokemon"]["species"]]];
-          document.getElementById("roster_".concat(poke_data[roster_loop]["slotId"], "_type_1")).innerHTML = pokemon_type_names[pokemon_type_1_lookup[poke_data[roster_loop]["pokemon"]["species"]]].toUpperCase();
-          document.getElementById("roster_".concat(poke_data[roster_loop]["slotId"], "_type_2_bg")).style.backgroundColor = pokemon_type_colors[pokemon_type_2_lookup[poke_data[roster_loop]["pokemon"]["species"]]];
-          document.getElementById("roster_".concat(poke_data[roster_loop]["slotId"], "_type_2")).innerHTML = pokemon_type_names[pokemon_type_2_lookup[poke_data[roster_loop]["pokemon"]["species"]]].toUpperCase();
-        }
+        type_1_draw_output = pokemon_type_1_lookup[poke_data[roster_loop]["pokemon"]["species"]];
+        type_2_draw_output = pokemon_type_2_lookup[poke_data[roster_loop]["pokemon"]["species"]];
 
         //this code deals with drawing the HP bar and text
         if (hp_draw == true){
@@ -354,100 +341,28 @@ function update_(){
           if(health_ <= 0.2) {document.getElementById("roster_".concat( poke_data[roster_loop]["slotId"], "_hp")).style.backgroundColor = 'rgba(211, 78, 80, 255)';}
         }
 
-        if (hp_numeric_draw == true){
-          document.getElementById("roster_".concat( poke_data[roster_loop]["slotId"], "_hp_numerical")).innerHTML = "&nbsp".concat(poke_data[roster_loop]["pokemon"]["hp"]["current"], "/", poke_data[roster_loop]["pokemon"]["hp"]["max"]);
-        }
-
-        //pokemon status conditions.
-        //if pokemon is fainted, render fainted
-        if (status_draw == true){
-          if(poke_data[roster_loop]["pokemon"]["hp"]["current"] == 0){
-            document.getElementById("status_".concat(poke_data[roster_loop]["slotId"])).innerHTML = pokemon_status_names[7];
-            document.getElementById("status_bg_".concat(poke_data[roster_loop]["slotId"])).style.backgroundColor = pokemon_status_colors[7];
-          }
-
-          else if (poke_data[roster_loop]["pokemon"]["status"]["psn"] == true){
-            document.getElementById("status_".concat(poke_data[roster_loop]["slotId"])).innerHTML = pokemon_status_names[1];
-            document.getElementById("status_bg_".concat(poke_data[roster_loop]["slotId"])).style.backgroundColor = pokemon_status_colors[1];
-          }
-
-          else if (poke_data[roster_loop]["pokemon"]["status"]["frz"] == true){
-            document.getElementById("status_".concat(poke_data[roster_loop]["slotId"])).innerHTML = pokemon_status_names[2];
-            document.getElementById("status_bg_".concat(poke_data[roster_loop]["slotId"])).style.backgroundColor = pokemon_status_colors[2];
-          }
-
-          else if (poke_data[roster_loop]["pokemon"]["status"]["slp"] == true){
-            document.getElementById("status_".concat(poke_data[roster_loop]["slotId"])).innerHTML = pokemon_status_names[3];
-            document.getElementById("status_bg_".concat(poke_data[roster_loop]["slotId"])).style.backgroundColor = pokemon_status_colors[3];
-          }
-
-          else if (poke_data[roster_loop]["pokemon"]["status"]["par"] == true){
-            document.getElementById("status_".concat(poke_data[roster_loop]["slotId"])).innerHTML = pokemon_status_names[4];
-            document.getElementById("status_bg_".concat(poke_data[roster_loop]["slotId"])).style.backgroundColor = pokemon_status_colors[4];
-          }
-
-          else if (poke_data[roster_loop]["pokemon"]["status"]["bps"] == true){
-            document.getElementById("status_".concat(poke_data[roster_loop]["slotId"])).innerHTML = pokemon_status_names[5];
-            document.getElementById("status_bg_".concat(poke_data[roster_loop]["slotId"])).style.backgroundColor = pokemon_status_colors[5];
-          }
-
-          else if (poke_data[roster_loop]["pokemon"]["status"]["brn"] == true){
-            document.getElementById("status_".concat(poke_data[roster_loop]["slotId"])).innerHTML = pokemon_status_names[6];
-            document.getElementById("status_bg_".concat(poke_data[roster_loop]["slotId"])).style.backgroundColor = pokemon_status_colors[6];
-          }
-
-          else if (poke_data[roster_loop]["pokemon"]["pokerus"] > 0){
-            document.getElementById("status_".concat(poke_data[roster_loop]["slotId"])).innerHTML = pokemon_status_names[8];
-            document.getElementById("status_bg_".concat(poke_data[roster_loop]["slotId"])).style.backgroundColor = pokemon_status_colors[8];
-          }
-
-          else {
-            document.getElementById("status_".concat(poke_data[roster_loop]["slotId"])).innerHTML = pokemon_status_names[0];
-            document.getElementById("status_bg_".concat(poke_data[roster_loop]["slotId"])).style.backgroundColor = pokemon_status_colors[0];
-          }
-
-        }
-
+        hp_numeric_draw_output = "&nbsp".concat(poke_data[roster_loop]["pokemon"]["hp"]["current"], "/", poke_data[roster_loop]["pokemon"]["hp"]["max"]);
+        
+        //pokemon status conditions. if pokemon is fainted, render fainted, otherwise renders status condition
+        
+        if(poke_data[roster_loop]["pokemon"]["hp"]["current"] == 0){status_draw_output = 7;}
+        else if (poke_data[roster_loop]["pokemon"]["status"]["psn"] == true){status_draw_output = 1;}
+        else if (poke_data[roster_loop]["pokemon"]["status"]["frz"] == true){status_draw_output = 2;}
+        else if (poke_data[roster_loop]["pokemon"]["status"]["slp"] == true){status_draw_output = 3;}
+        else if (poke_data[roster_loop]["pokemon"]["status"]["par"] == true){status_draw_output = 4;}
+        else if (poke_data[roster_loop]["pokemon"]["status"]["bps"] == true){status_draw_output = 5;}
+        else if (poke_data[roster_loop]["pokemon"]["status"]["brn"] == true){status_draw_output = 6;}
+        else if (poke_data[roster_loop]["pokemon"]["pokerus"] > 0){status_draw_output = 8;}
+        else {status_draw_output = 0;}
 
         // Erratic	0    Fast	1    Medium Fast	2    Medium Slow	3    Slow	4    Fluctuating	5
         //calculates the current exp in the current level, and translates that to the length of the experience bar. First it looks up the level curve the pokemon is going to draw values from, then uses that with the pokemon's current level to calculate the variance.
-        if (experience_draw == true){
-          document.getElementById("roster_".concat( poke_data[roster_loop]["slotId"], "_exp_border")).style.borderWidth = 2;
-          document.getElementById("roster_".concat( poke_data[roster_loop]["slotId"], "_exp")).style.backgroundColor = 'rgba(75, 210, 244,255)';
+        
+        exp_draw_output = 1;
 
-          if (pokemon_level_curve[poke_data[roster_loop]["pokemon"]["species"]] == 0){
-            var exp_ = poke_data[roster_loop]["pokemon"]["exp"] - level_curve_erratic[poke_data[roster_loop]["pokemon"]["level"]];
-            var exp_width = ((poke_data[roster_loop]["pokemon"]["exp"] - level_curve_erratic[poke_data[roster_loop]["pokemon"]["level"]]) / (level_curve_erratic[poke_data[roster_loop]["pokemon"]["level"]+1] - level_curve_erratic[poke_data[roster_loop]["pokemon"]["level"]]))*exp_bar_width;
-          }
+        
 
-          else if (pokemon_level_curve[poke_data[roster_loop]["pokemon"]["species"]] == 1){
-            var exp_ = poke_data[roster_loop]["pokemon"]["exp"] - level_curve_fast[poke_data[roster_loop]["pokemon"]["level"]];
-            var exp_width = ((poke_data[roster_loop]["pokemon"]["exp"] - level_curve_fast[poke_data[roster_loop]["pokemon"]["level"]]) / (level_curve_fast[poke_data[roster_loop]["pokemon"]["level"]+1] - level_curve_fast[poke_data[roster_loop]["pokemon"]["level"]]))*exp_bar_width;
-          }
-
-          else if (pokemon_level_curve[poke_data[roster_loop]["pokemon"]["species"]] == 2){
-            var exp_ = poke_data[roster_loop]["pokemon"]["exp"] - level_curve_medium_fast[poke_data[roster_loop]["pokemon"]["level"]];
-            var exp_width = ((poke_data[roster_loop]["pokemon"]["exp"] - level_curve_medium_fast[poke_data[roster_loop]["pokemon"]["level"]]) / (level_curve_medium_fast[poke_data[roster_loop]["pokemon"]["level"]+1] - level_curve_medium_fast[poke_data[roster_loop]["pokemon"]["level"]]))*exp_bar_width;
-          }
-
-          else if (pokemon_level_curve[poke_data[roster_loop]["pokemon"]["species"]] == 3){
-            var exp_ = poke_data[roster_loop]["pokemon"]["exp"] - level_curve_medium_slow[poke_data[roster_loop]["pokemon"]["level"]];
-            var exp_width = ((poke_data[roster_loop]["pokemon"]["exp"] - level_curve_medium_slow[poke_data[roster_loop]["pokemon"]["level"]]) / (level_curve_medium_slow[poke_data[roster_loop]["pokemon"]["level"]+1] - level_curve_medium_slow[poke_data[roster_loop]["pokemon"]["level"]]))*exp_bar_width;
-          }
-
-          else if (pokemon_level_curve[poke_data[roster_loop]["pokemon"]["species"]] == 4){
-            var exp_ = poke_data[roster_loop]["pokemon"]["exp"] - level_curve_slow[poke_data[roster_loop]["pokemon"]["level"]];
-            var exp_width = ((poke_data[roster_loop]["pokemon"]["exp"] - level_curve_slow[poke_data[roster_loop]["pokemon"]["level"]]) / (level_curve_slow[poke_data[roster_loop]["pokemon"]["level"]+1] - level_curve_slow[poke_data[roster_loop]["pokemon"]["level"]]))*exp_bar_width;
-          }
-
-          else if (pokemon_level_curve[poke_data[roster_loop]["pokemon"]["species"]] == 5){
-            var exp_ = poke_data[roster_loop]["pokemon"]["exp"] - level_curve_fluctuating[poke_data[roster_loop]["pokemon"]["level"]];
-            var exp_width = ((poke_data[roster_loop]["pokemon"]["exp"] - level_curve_fluctuating[poke_data[roster_loop]["pokemon"]["level"]]) / (level_curve_fluctuating[poke_data[roster_loop]["pokemon"]["level"]+1] - level_curve_fluctuating[poke_data[roster_loop]["pokemon"]["level"]]))*exp_bar_width;
-          }
-
-          document.getElementById("roster_".concat( poke_data[roster_loop]["slotId"], "_exp")).style.width = exp_width;
-        }
-
+        exp_width = ((poke_data[roster_loop]["pokemon"]["exp"] - exp_curve_lut[pokemon_level_curve[poke_data[roster_loop]["pokemon"]["species"]]][poke_data[roster_loop]["pokemon"]["level"]]) / (exp_curve_lut[pokemon_level_curve[poke_data[roster_loop]["pokemon"]["species"]]][poke_data[roster_loop]["pokemon"]["level"]+1] - exp_curve_lut[pokemon_level_curve[poke_data[roster_loop]["pokemon"]["species"]]][poke_data[roster_loop]["pokemon"]["level"]]))*exp_bar_width;
 
         if (moves_draw == true){
 
@@ -475,7 +390,59 @@ function update_(){
         
         //this curly bracket is the end of the else statement. if its supposed to be in the else statement for the pokemon update, put it *before* this curly boi
       }
+
+      //throws all the outputs into their respective fields
+      if(sprite_draw == true){document.getElementById("roster_".concat( poke_data[roster_loop]["slotId"], "_sprite")).style.backgroundImage = sprite_draw_output;}
+
+      if (held_item_draw == true){
+        document.getElementById("held_item_sprite_".concat( poke_data[roster_loop]["slotId"])).style.backgroundImage = "url('".concat(item_images_root, gen_3_items[poke_data[roster_loop]["pokemon"]["heldItem"]].toLowerCase(), item_extension, "')");
+      }
+
+      if(nickname_draw == true){document.getElementById("roster_".concat( poke_data[roster_loop]["slotId"], "_nickname")).innerHTML = nickname_draw_output;}
+
+      if(species_name_draw = true){
+        document.getElementById("roster_".concat( poke_data[roster_loop]["slotId"], "_species")).innerHTML = species_name_draw_output;
+
+        document.getElementById("roster_".concat( poke_data[roster_loop]["slotId"], "_egg")).innerHTML = egg_name_draw_output;
+
+        document.getElementById("roster_".concat( poke_data[roster_loop]["slotId"], "_egg_description")).innerHTML = egg_status_draw_output;
       
+      }
+
+      if(level_draw == true){document.getElementById("roster_".concat( poke_data[roster_loop]["slotId"], "_level")).innerHTML = level_draw_output;}
+
+      if(hp_numeric_draw == true){document.getElementById("roster_".concat( poke_data[roster_loop]["slotId"], "_hp_numerical")).innerHTML = hp_numeric_draw_output;}
+
+      if(shiny_star_draw == true){document.getElementById("roster_shiny_".concat( poke_data[roster_loop]["slotId"])).innerHTML = shiny_star_draw_output}
+
+      if(gender_draw == true){
+        document.getElementById("roster_gender_".concat(poke_data[roster_loop]["slotId"])).style.backgroundColor = pokemon_gender_colors[gender_draw_output];
+        document.getElementById("roster_gender_".concat(poke_data[roster_loop]["slotId"])).innerHTML = pokemon_gender_symbols[gender_draw_output];
+      }
+
+      if (pokeball_draw == true){
+        document.getElementById("ball_sprite_".concat( poke_data[roster_loop]["slotId"])).style.backgroundImage = pokeball_draw_output;
+      }
+
+      if (types_draw == true){
+        document.getElementById("roster_".concat(poke_data[roster_loop]["slotId"], "_type_1_bg")).style.backgroundColor = pokemon_type_colors[type_1_draw_output];
+        document.getElementById("roster_".concat(poke_data[roster_loop]["slotId"], "_type_1")).innerHTML = pokemon_type_names[type_1_draw_output].toUpperCase();
+        document.getElementById("roster_".concat(poke_data[roster_loop]["slotId"], "_type_2_bg")).style.backgroundColor = pokemon_type_colors[type_2_draw_output];
+        document.getElementById("roster_".concat(poke_data[roster_loop]["slotId"], "_type_2")).innerHTML = pokemon_type_names[type_2_draw_output].toUpperCase();
+      }
+
+      if(status_draw == true){
+        document.getElementById("status_".concat(poke_data[roster_loop]["slotId"])).innerHTML = pokemon_status_names[status_draw_output];
+        document.getElementById("status_bg_".concat(poke_data[roster_loop]["slotId"])).style.backgroundColor = pokemon_status_colors[status_draw_output];
+      }
+
+
+      if(experience_draw==true){
+        document.getElementById("roster_".concat( poke_data[roster_loop]["slotId"], "_exp_border")).style.borderWidth = exp_border_width[exp_draw_output];
+        document.getElementById("roster_".concat( poke_data[roster_loop]["slotId"], "_exp")).style.width = exp_width;
+        document.getElementById("roster_".concat( poke_data[roster_loop]["slotId"], "_exp")).style.backgroundColor = exp_bg_color[exp_draw_output];
+      }
+
       //this code will be eventually used to solve the pokemon flip glitch
       //pokemon_pids_minus_2[poke_data[roster_loop]["slotId"]] = pokemon_pids_minus_1[poke_data[roster_loop]["slotId"]];
       //pokemon_pids_minus_1[poke_data[roster_loop]["slotId"]] = poke_data[roster_loop]["pokemon"]["pid"];
@@ -485,12 +452,14 @@ function update_(){
     }
     //end of function
 
+    
+
     //updates the slot id update numbers for future reference
     slot_change_ids[poke_data[roster_loop]["slotId"]] = poke_data[roster_loop]["changeId"];
     roster_loop ++;
   } 
-  console.log(update_loop);
-  //update_loop ++;
+  // console.log(update_loop);
+  // update_loop ++;
 }
 
 
@@ -507,8 +476,6 @@ setInterval(
       //console.log(poke_data);
       update_();
     });
-  }
-    
-  ,100
+  },
 
-);
+100);
