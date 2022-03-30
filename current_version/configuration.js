@@ -27,7 +27,7 @@ var item_images_root = "https://www.serebii.net/itemdex/sprites/";
 var item_extension = ".png";
 
 //pokemon sprites must be lowercase names of pokemon only. e.g. Bulbasaur = bulbasaur.xxx Mr. Mime = mr.mime.xxx Make sure the egg sprite is also with the pokemon sprites, and write its filename below as a full filename e.g. egg.png
-var pokemon_normal_sprites_root = "sprites/normal_sprites/";
-var pokemon_shiny_sprites_root = "sprites/shiny_sprites/";
+var pokemon_normal_sprites_root = "https://projectpokemon.org/images/normal-sprite/";
+var pokemon_shiny_sprites_root = "https://projectpokemon.org/images/shiny-sprite/";
 var pokemon_sprites_extension = ".gif";
 var egg_filename = "egg.png";
